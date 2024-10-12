@@ -8,6 +8,8 @@ import Listing from './pages/Listing';
 import Login from './pages/Login';
 import Rent from './pages/Rent';
 import Sell from './pages/Sell';
+import Footer from './components/Footer';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
@@ -15,15 +17,16 @@ function App() {
     <BrowserRouter>
       <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/agents" element={<Agents />} />
           <Route path="/buy" element={<Buy />} />
-          <Route path="/favourites" element={<Favourites />} />
-          <Route path="/listing/:id" element={<Listing />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/rent" element={<Rent />} />
           <Route path="/sell" element={<Sell />} />
+          <Route path="/agents" element={<Agents />} />
+          <Route path="/favourites" element={<Favourites />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/listing/:id" element={<Listing />} />
       </Routes>
     </BrowserRouter>
+    <Footer/>
     </div>
   );
 }
