@@ -6,48 +6,14 @@ const Rent = () => {
 
   const [propertiesData,setPropertiesData] = useState(false)
 
-  useEffect(()=>{
-    const data = [
-      {
-        img:"./media/homepage4.jpg",
-        price: "15 000 p/m",
-        title: "3 Bedroom Townhouse For Sale In Vanderbijlpark SE 2",
-        description: "This spacious townhouse is situated in a secure complex, offering open plan living areas with a lovely wooden kitchen...",
-        bed: 3,
-        bath: 2,
-        car: 2,
-        pet: true,
-        sqrmeter : 1500,
-      },
-      {
-        img:"./media/homepage3.jpg",
-        price: "12 000 p/m",
-        title: "3 Bedroom Townhouse For Sale In Vanderbijlpark SE 2",
-        description: "This spacious townhouse is situated in a secure complex, offering open plan living areas with a lovely wooden kitchen...",
-        bed: 3,
-        bath: 2,
-        car: 2,
-        pet: false,
-        sqrmeter : 1500,
-      },
-      {
-        img:"./media/homepage1.jpg",
-        price: "10 000 p/m",
-        title: "3 Bedroom Townhouse For Sale In Vanderbijlpark SE 2",
-        description: "This spacious townhouse is situated in a secure complex, offering open plan living areas with a lovely wooden kitchen...",
-        bed: 3,
-        bath: 2,
-        car: 2,
-        pet: true,
-        sqrmeter : 1500,
-      }
-    ]
-    setPropertiesData(data)
-  },[])
+  function handleData(e){
+    setPropertiesData(e)
+  }
+
   return (
     <div className='BuyOrRent'>
       <Navbar/>
-      <SearchAndFilter/>
+      <SearchAndFilter onChange={handleData} sellType="rent"/>
       
     <section class="properties-list">
       <h2>Properties to <span>Rent</span></h2>
@@ -56,7 +22,7 @@ const Rent = () => {
         <>
         {propertiesData.map((property)=>{
           return(
-            <PropertyCard img={property.img} price={property.price} title={property.title} description={property.description} bed={property.bed} bath={property.bath} car={property.car} pet={property.pet} sqrmeter={property.sqrmeter}  />
+            <PropertyCard img={"http://localhost:8080/image/"+property.images[0]} price={property.price} title={property.listingHeading} description={property.listingDescription} bed={property.bed} bath={property.bath} car={property.car} pet={property.pet} sqrmeter={property.sqrmeter}  />
           )
         })}
         </>

@@ -1,12 +1,17 @@
 import React from 'react'
+import numeral from 'numeral';
+
 
 const PropertyCard = (props) => {
+  
   return (
+    
     <div>
         <div class="property-card">
           <img src={props.img} alt="Property Image" />
           <div class="property-info">
-            <h3>R{props.price}</h3>
+            <h3>R{numeral(props.price).format('0,0').replace(/,/g, ' ')}</h3>
+
             <h4>{props.title}</h4>
             <p>{props.description}</p>
             <div class="property-details">

@@ -37,7 +37,14 @@ const Home = () => {
         price:"123 456 78",
         location:"Moreleta Park, Pretoria",
         reference:"111223533"
-      }
+      },
+      {
+        img:"./media/homepage1.jpg",
+        title:"1 Bedroom House",
+        price:"123 456 78",
+        location:"Moreleta Park, Pretoria",
+        reference:"111223533"
+      } 
       
     ]
     setFeaturedListings(data)
@@ -83,7 +90,7 @@ const Home = () => {
         {featuredListings ? <>
           {featuredListings.map((listing)=>{
           return(
-            <FeaturedListingCard img={listing.img} title={listing.title} price={listing.price} location={listing.price} reference={listing.references} />
+            <FeaturedListingCard img={listing.img} title={listing.title} price={listing.price} location={listing.location} reference={listing.reference} />
           )
         })}
         </>
