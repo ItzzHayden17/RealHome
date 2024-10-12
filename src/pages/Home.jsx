@@ -1,6 +1,49 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {useState,useEffect} from "react"
+import FeaturedListingCard from '../components/FeaturedListingCard'
+
 const Home = () => {
+
+  const [featuredListings,setFeaturedListings] = useState(false) 
+
+  useEffect(()=>{        //Use this to get data from server and set the useState.
+
+    const data = [
+      {
+        img:"./media/homepage2.jpg",
+        title:"3 Bedroom House",
+        price:"123 456 78",
+        location:"Moreleta Park, Pretoria",
+        reference:"111223533"
+      },
+      {
+        img:"./media/homepage2.jpg",
+        title:"3 Bedroom House",
+        price:"123 456 78",
+        location:"Moreleta Park, Pretoria",
+        reference:"111223533"
+      },
+      {
+        img:"./media/homepage2.jpg",
+        title:"3 Bedroom House",
+        price:"123 456 78",
+        location:"Moreleta Park, Pretoria",
+        reference:"111223533"
+      },
+      {
+        img:"./media/homepage2.jpg",
+        title:"3 Bedroom House",
+        price:"123 456 78",
+        location:"Moreleta Park, Pretoria",
+        reference:"111223533"
+      }
+      
+    ]
+    setFeaturedListings(data)
+  },[])
+
+
   return (
     <div className='Home'>
           <header>
@@ -37,51 +80,20 @@ const Home = () => {
     <section class="featured-listings">
       <h2>Featured <span >Listings</span></h2>
       <div class="listings">
-
-        <div class="listing-card">
-          <img src="./media/homepage2.jpg" alt="Property Image" />
-          <h3>3 Bedroom House</h3>
-          <p class="price">ZAR 123 456 789</p>
-          <p class="location">Moreleta Park, Pretoria</p>
-          <p class="reference">Reference: 111223533</p>
-        </div>
-
-
-        <div class="listing-card">
-          <img src="./media/homepage2.jpg" alt="Property Image" />
-          <h3>3 Bedroom Townhouse</h3>
-          <p class="price">ZAR 123 456 789</p>
-          <p class="location">Moreleta Park, Pretoria</p>
-          <p class="reference">Reference: 111223533</p>
-        </div>
-
-        <div class="listing-card">
-          <img src="./media/homepage2.jpg" alt="Property Image" />
-          <h3>5 Bedroom House</h3>
-          <p class="price">ZAR 123 456 789</p>
-          <p class="location">Moreleta Park, Pretoria</p>
-          <p class="reference">Reference: 111223533</p>
-        </div>
-
-        <div class="listing-card">
-          <img src="./media/homepage2.jpg" alt="Property Image" />
-          <h3>1 Bedroom Apartment</h3>
-          <p class="price">ZAR 123 456 789</p>
-          <p class="location">Moreleta Park, Pretoria</p>
-          <p class="reference">Reference: 111223533</p>
-        </div>
-
-
-        <div class="listing-card">
-          <img src="./media/homepage2.jpg" alt="Property Image" />
-          <h3>2 Bedroom Townhouse</h3>
-          <p class="price">ZAR 123 456 789</p>
-          <p class="location">Moreleta Park, Pretoria</p>
-          <p class="reference">Reference: 111223533</p>
-        </div>
+        {featuredListings ? <>
+          {featuredListings.map((listing)=>{
+          return(
+            <FeaturedListingCard img={listing.img} title={listing.title} price={listing.price} location={listing.price} reference={listing.references} />
+          )
+        })}
+        </>
+        :
+        <>
+        Loading
+        </>}
       </div>
       <div>
-        <a href="buy.html" class="view-all-btn">View All Properties</a>
+        <a href="/buy" class="view-all-btn">View All Properties</a>
       </div>
     </section>
 

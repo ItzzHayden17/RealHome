@@ -116,6 +116,8 @@ const Sell = () => {
           <label for="bathrooms">Bathrooms:</label>
           <input type="number" id="bathrooms" name="bathrooms" />
 
+          <div className="additional-features">
+            
           <label for="kitchen">Kitchen:</label>
           <input type="checkbox" id="kitchen" name="features" value="Kitchen" />
 
@@ -149,6 +151,7 @@ const Sell = () => {
 
           <label for="flatlet">Flatlet:</label>
           <input type="checkbox" id="flatlet" name="features" value="Flatlet" />
+          </div>
         </div>
 
         <div class="form-section">
