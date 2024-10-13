@@ -24,6 +24,8 @@ const SearchAndFilter = (props) => {
   function handleFilter(e){
     const {name,value} = e.target
     setFilters((prevFilters) => ({ ...prevFilters, [name]: value }));
+    console.log(value);
+    
   }
 
 
@@ -31,9 +33,7 @@ const SearchAndFilter = (props) => {
     axios.get('http://localhost:8080/properties')
       .then((response) => {
         const data = response.data;
-        setPropertiesData(data);
-        console.log(data);
-        
+        setPropertiesData(data);     
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
