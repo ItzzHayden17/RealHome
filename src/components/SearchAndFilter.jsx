@@ -1,6 +1,6 @@
 import React ,{useState,useEffect,useMemo} from 'react';
 import axios from "axios";
-
+import serverUrl from '../serverUrl';
 const SearchAndFilter = (props) => {
 
 
@@ -30,7 +30,7 @@ const SearchAndFilter = (props) => {
 
 
   useEffect(() => {
-    axios.get('http://localhost:8080/properties')
+    axios.get(serverUrl+ '/properties')
       .then((response) => {
         const data = response.data;
         setPropertiesData(data);     

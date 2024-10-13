@@ -40,18 +40,6 @@ h6,
   font-family: "Sora", sans-serif;
 }
 
-/* Variables */
-:root {
-  --purple: #6a2e78;
-  --red: #d72c41;
-  --dark-grey: #353941;
-  --grey: #e5e1e6;
-  --off-white: #f9f8f4;
-  --off-white-t: rgba(249, 248, 244, 0.8);
-  --grey-background: #d3d3cd;
-  --white: #fcfcfb;
-}
-
 /* //////////////////////////////////// */
 /* Navbar */
 /* //////////////////////////////////// */
@@ -92,6 +80,11 @@ h6,
   transform: translateY(-5px); /* Add subtle hover effect */
 }
 
+.logout{
+  color: #ffffff;
+  position: absolute;
+  cursor: pointer;
+}
 /* //////////////////////////////////// */
 /* Hero Section */
 /* //////////////////////////////////// */
@@ -553,24 +546,12 @@ h6,
   font-family: "Sora", sans-serif;
 }
 
-/* Variables */
-:root {
-  --purple: #6a2e78;
-  --red: #d72c41;
-  --dark-grey: #353941;
-  --grey: #e5e1e6;
-  --off-white: #f9f8f4;
-  --off-white-t: rgba(249, 248, 244, 0.8);
-  --grey-background: #d3d3cd;
-  --white: #fcfcfb;
-}
 
 .navbar {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   padding: 20px 5%;
-  position: absolute;
   width: 100%;
   height: 150px;
   top: 0;
@@ -601,6 +582,11 @@ h6,
   transform: translateY(-5px); /* Add subtle hover effect */
 }
 
+.logout{
+  color: #6a2e78;
+  position: absolute;
+  cursor: pointer;
+}
 }
 .Footer{
   /* //////////////////////////////////// */
@@ -729,7 +715,7 @@ h6,
 
 .sell-property {
   max-width: 800px;
-  margin: 200px auto 50px auto;
+  margin: 50px auto;
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 10px;
@@ -887,8 +873,14 @@ h6,
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  height: 200px;
+  overflow: hidden;
+  cursor: pointer;
 }
 
+p{
+  
+}
 .property-card:hover {
   transform: scale(1.03);
   box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
@@ -948,7 +940,6 @@ h6,
 }
 .SearchAndFilter{
   .search-filter {
-    margin-top: 200px;
     padding: 50px;
     background-color: var(--off-white);
     text-align: center;
@@ -986,8 +977,192 @@ h6,
   }
   
 }
+.Login{
+  /* RESET */ 
+display: flex;
+flex-direction: column;
+background: url("/public/media/homepage3.jpg") no-repeat;
+background-position: center;
+background-size: cover;
 
 
+.main-logo {
+  display: flex;
+  justify-content: center;
+}
+
+.main-logo img {
+  padding-top: 20px;
+  width: 300px;
+  height: 300px;
+}
+
+.login-section {
+  max-width: 500px;
+  margin: 40px auto 80px auto;
+  padding: 20px;
+  background-color: var(--off-white-t);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.login-section h2 {
+  font-family: "Sora", sans-serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--dark-grey);
+}
+
+.login-form,
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+input {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgba(254, 253, 252, 0.742);
+}
+
+button {
+  background-color: var(--purple);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-family: "Sora", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--red);
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+p a {
+  color: var(--purple);
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+}
+.Agents{
+  /* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif; /* Default body font */
+  background-color: var(--off-white);
+}
+
+/* //////////////////////////////////// */
+/* Agents Page Styles */
+/* //////////////////////////////////// */
+
+.agents-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.agents-section h2 {
+  font-family: "Sora", sans-serif;
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: var(--dark-grey);
+  font-weight: 700;
+}
+
+.agents-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.agent-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  height: 400px;
+  margin: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+.agent-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.agent-photo {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  object-fit: cover;
+}
+
+.agent-card h3 {
+  font-family: "Sora", sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--dark-grey);
+}
+
+.agent-card p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  color: var(--dark-grey);
+  margin-bottom: 10px;
+}
+
+.contact-agent-btn {
+  background-color: var(--purple);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-family: "Sora", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-agent-btn:hover {
+  background-color: var(--red);
+}
+
+}
 @media (max-width: 768px) {
   .navbar .nav-links {
     gap: 20px;

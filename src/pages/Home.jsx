@@ -2,8 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import {useState,useEffect} from "react"
 import FeaturedListingCard from '../components/FeaturedListingCard'
-
+import Cookie from "js-cookie"
+import serverUrl from '../serverUrl'
+import axios from 'axios'
 const Home = () => {
+  const [user,setUser] = useState(false)
+  const [logout,setLogout] = useState(false)
+  const [agentsData,setAgentsData] = useState([])
+
 
   const [featuredListings,setFeaturedListings] = useState(false) 
 
@@ -48,7 +54,33 @@ const Home = () => {
       
     ]
     setFeaturedListings(data)
+
+    if(Cookie.get("user")){
+      setUser(JSON.parse(Cookie.get("user")))
+    }
+
+    axios.get(serverUrl+"/all-agents").then((response)=>{
+      const top3 = response.data.slice(0,3)
+      setAgentsData(top3)
+      console.log(top3);
+      
+    })
   },[])
+
+  function handleHover(e){
+    console.log(e);
+    
+    if (logout) {
+      setLogout(false)
+    }else{
+      setLogout(true)
+    }
+  }
+
+  function handleLogout(e){
+    Cookie.remove("user")
+    window.location.reload()
+  }
 
 
   return (
@@ -68,10 +100,16 @@ const Home = () => {
         <li><Link to="/">Home</Link></li>
           <li><Link to="/buy">Buy</Link></li>
           <li><Link to="/rent">Rent</Link></li>
-          <li><Link to="/sell">Sell</Link></li>
+          {user.isAgent? 
+          <><li><Link to="/sell">Sell</Link></li></>:
+          <></>}
           <li><Link to="/agents">Agents</Link></li>
           <li><Link to="/favourites">Favourites</Link></li>
-          <li><Link to="/login">Login</Link></li>
+          {user ? 
+          <div onMouseEnter={handleHover} onMouseLeave={handleHover}><li><a><span>Hello {user.name}</span></a></li>
+          {logout? <><div className='logout' onClick={handleLogout}>Logout</div></>:<></>}
+          </div>:
+          <><li><Link to="/login">Login</Link></li></>}
         </ul>
       </nav>
     </header>
@@ -127,21 +165,17 @@ const Home = () => {
     <section class="our-agents">
       <h2>Our <span>Agents</span></h2>
       <div class="agents">
-        <div class="agent-card">
-          <img src="./media/HS1.jpg" alt="Agent Photo" />
-          <h3>Piet Pompies</h3>
-          <p>Property Practitioner</p>
-        </div>
-        <div class="agent-card">
-          <img src="./media/HS2.jpg" alt="Agent Photo" />
-          <h3>Scooby Doo</h3>
-          <p>Property Practitioner</p>
-        </div>
-        <div class="agent-card">
-          <img src="./media/HS3.jpg" alt="Agent Photo" />
-          <h3>Tannie Sannie</h3>
-          <p>Property Practitioner</p>
-        </div>
+
+        {agentsData.map((agent)=>{
+          return(
+            <div class="agent-card">
+            <img src={serverUrl+"/image/agents/"+agent.image} alt="Agent Photo" />
+            <h3>{agent.name} {agent.surname}</h3>
+            <p>Property Practitioner</p>
+          </div>
+          )
+        })}
+
       </div>
     </section>
     </div>

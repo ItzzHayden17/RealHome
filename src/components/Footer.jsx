@@ -1,6 +1,17 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import { Router,Link } from 'react-router-dom'
+import Cookie from "js-cookie"
 const Footer = () => {
+
+  const [user,setUser] = useState(false)
+
+  useEffect(()=>{
+    if(Cookie.get("user")){
+      setUser(JSON.parse(Cookie.get("user")))
+    }
+  },[])
+
+
   return (
     <div className='Footer'>
             <footer role="navigation">
@@ -15,12 +26,15 @@ const Footer = () => {
         <div class="footer-links">
           <a href="/buy">Buy</a>
           <a href="/rent">Rent</a>
-          <a href="/sell">Sell</a>
+          {user.isAgent? <>
+            <a href="/sell">Sell</a>
+          </> :<></>}
           <a href="/agents">Agents</a>
           <a href="/favourites">Favourites</a>
         </div>
         <div class="footer-user">
-          <a href="/login"><i class="fas fa-user"></i> Login</a>
+          {user? <>{user.name} {user.surname}</>:
+          <><a href="/login"><i class="fas fa-user"></i> Login</a></>}
         </div>
         <div class="footer-social">
           <a href="https://facebook.com" target="_blank" aria-label="Facebook"

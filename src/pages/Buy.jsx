@@ -2,6 +2,7 @@ import React, { useEffect,useState } from 'react'
 import Navbar from '../components/Navbar'
 import SearchAndFilter from '../components/SearchAndFilter'
 import PropertyCard from '../components/PropertyCard'
+import serverUrl from '../serverUrl'
 const Buy = () => {
 
   const [propertiesData,setPropertiesData] = useState(false)
@@ -24,7 +25,7 @@ const Buy = () => {
         <>
         {propertiesData.map((property)=>{
           return(
-            <PropertyCard img={"http://localhost:8080/image/"+property.images[0]} price={property.price} title={property.listingHeading} description={property.listingDescription} bed={property.bed} bath={property.bath} car={property.car} pet={property.pet} sqrmeter={property.sqrmeter}  />
+            <PropertyCard img={serverUrl+"/image/"+property.images[0]} price={property.price} title={property.listingHeading} description={property.listingDescription} bed={property.bed} bath={property.bath} car={property.car} pet={property.pet} sqrmeter={property.sqrmeter}  />
           )
         })}
         </>

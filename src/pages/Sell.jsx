@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import serverUrl from '../serverUrl'
 const Sell = () => {
   return (
     
@@ -9,7 +10,7 @@ const Sell = () => {
       <h2>List Your <span>Property</span></h2>
       <form
         id="property-form"
-        action="http://localhost:8080/list-property"
+        action={serverUrl+"/list-property"}
         method="post"
         enctype="multipart/form-data"
       >
