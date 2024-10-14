@@ -10,10 +10,8 @@ const Sell = () => {
     try {
       setUserId(JSON.parse(Cookie.get("user"))._id)
       console.log(JSON.parse(Cookie.get("user"))._id);
-      
     } catch (error) {
       console.log("User not logged in");
-      
     }
 
   })
@@ -40,9 +38,9 @@ const Sell = () => {
 
           <label for="propertyType">Property Type:</label>
           <select id="propertyType" name="propertyType">
-            <option value="house">House</option>
-            <option value="apartment">Apartment</option>
-            <option value="townhouse">Townhouse</option>
+            <option value="House">House</option>
+            <option value="Apartment">Apartment</option>
+            <option value="Townhouse">Townhouse</option>
           </select>
 
           <label for="erfSize">Erf Size (m²):</label>

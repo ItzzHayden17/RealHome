@@ -1,8 +1,8 @@
 import React from 'react'
 import numeral from 'numeral';
 import TextTruncate from 'react-text-truncate';
-import Cookie from "js-cookie"
-
+import serverUrl from '../serverUrl';
+import { Link } from 'react-router-dom';
 const PropertyCard = (props) => {
 
   function handleFavourite(e){
@@ -10,10 +10,11 @@ const PropertyCard = (props) => {
   }
   return (
     
-    <div>
+    <div >
+      <Link to={"/listing/"+props.link}>
         <div class="property-card">
           
-          <img src={props.img} alt="Property Image" />
+          <img src={serverUrl+"/image/"+props.img} alt="Property Image" />
           <div class="property-info">
           <div className="favourite">{props.isFavourite? <><i class="fa-solid fa-heart" onClick={handleFavourite}></i></>:<><i class="fa-regular fa-heart" onClick={handleFavourite}></i></>}  </div>
             <h3>R{numeral(props.price).format('0,0').replace(/,/g, ' ')} {props.sellType == "rent" ? <>p/m</>:<></>}</h3>
@@ -35,6 +36,7 @@ const PropertyCard = (props) => {
             </div>
           </div>
         </div>
+        </Link>
     </div>
   )
 }

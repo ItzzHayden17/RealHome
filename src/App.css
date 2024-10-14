@@ -810,6 +810,9 @@ button[type="submit"]:hover {
   box-sizing: border-box;
 }
 
+a{
+  all: unset;
+}
 .favourite{
   color: #d72c41;
   position: absolute;
@@ -1159,10 +1162,25 @@ body {
   transition: background-color 0.3s ease;
 }
 
+.edit-profile-btn{
+  background-color: var(--red);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-family: "Sora", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 .contact-agent-btn:hover {
   background-color: var(--red);
 }
 
+.edit-profile-btn:hover{
+  background-color: var(--purple);
+}
 }
 
 .Favourites{
