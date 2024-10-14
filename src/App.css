@@ -810,32 +810,16 @@ button[type="submit"]:hover {
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Montserrat", sans-serif;
-  background-color: var(--off-white);
+.favourite{
+  color: #d72c41;
+  position: absolute;
+  right: 0;
+  font-size: 20px;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.navbar .logo {
-  font-family: "Sora", sans-serif;
+.favourite:hover{
+  scale: 1.2;
 }
-
-/* Variables */
-:root {
-  --purple: #6a2e78;
-  --red: #d72c41;
-  --dark-grey: #353941;
-  --grey: #e5e1e6;
-  --off-white: #f9f8f4;
-  --grey-background: #d3d3cd;
-  --white: #fcfcfb;
-}
-
 /* //////////////////////////////////// */
 /* Search Filter */
 /* //////////////////////////////////// */
@@ -896,6 +880,7 @@ p{
 
 .property-info {
   flex: 1;
+  position: relative;
 }
 
 .property-info h3 {
@@ -985,6 +970,22 @@ background: url("/public/media/homepage3.jpg") no-repeat;
 background-position: center;
 background-size: cover;
 
+.isAgent{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  p{
+    margin: 0 5px;
+  }
+  .fa-check{
+    color: green;
+  }
+  .fa-xmark{
+    color: #d72c41;
+  }
+}
 
 .main-logo {
   display: flex;
@@ -1159,6 +1160,102 @@ body {
 }
 
 .contact-agent-btn:hover {
+  background-color: var(--red);
+}
+
+}
+
+.Favourites{
+  /* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Favourites Page Styles */
+.favourites-section,
+.wishlist-section {
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.favourites-section h2,
+.wishlist-section h2 {
+  font-family: "Sora", sans-serif;
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #333;
+  text-align: center;
+}
+
+.favourites-container,
+.wishlist-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.favourite-card,
+.wishlist-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.favourite-card:hover,
+.wishlist-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.favourite-photo {
+  width: 350px; /* Uniform size - auto/100% werk nie */
+  height: 200px; /* Uniform size - auto/100% werk nie */
+  height: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.favourite-card h3,
+.wishlist-card h3 {
+  font-family: "Sora", sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.favourite-card p,
+.wishlist-card p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.remove-favourite-btn,
+.edit-wishlist-btn,
+.remove-wishlist-btn {
+  background-color: var(--purple);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-family: "Sora", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.remove-favourite-btn:hover,
+.edit-wishlist-btn:hover,
+.remove-wishlist-btn:hover {
   background-color: var(--red);
 }
 

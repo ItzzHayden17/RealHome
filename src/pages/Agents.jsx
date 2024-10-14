@@ -21,7 +21,7 @@ const Agents = () => {
         return(
           
           <div class="agent-card">
-            <img src={serverUrl+"/image/agents/"+agent.image} alt="Agent 1 Photo" class="agent-photo" />
+            <img src={serverUrl+"/image/"+agent.image} alt="Agent 1 Photo" class="agent-photo" />
             <h3>{agent.name} {agent.surname}</h3>
             <p>Property Practitioner</p>
             <p>Email: {agent.email}</p>

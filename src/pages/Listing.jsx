@@ -1,9 +1,15 @@
 import React from 'react'
+import Navbar from '../components/Navbar'
+const PropertyListing = () => {
 
-const Listing = () => {
+    // const paramPropertyId = useParams()
+
   return (
-    <div className='Listing'>Listing</div>
+    <div className='Listing'>
+      <Navbar/>
+
+    </div>
   )
 }
 
-export default Listing
+export default PropertyListing

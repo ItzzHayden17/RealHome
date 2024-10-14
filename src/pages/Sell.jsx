@@ -1,7 +1,22 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import Navbar from '../components/Navbar'
+import Cookie from "js-cookie"
 import serverUrl from '../serverUrl'
 const Sell = () => {
+
+  const [userId,setUserId] = useState(null)
+
+  useEffect(()=>{
+    try {
+      setUserId(JSON.parse(Cookie.get("user"))._id)
+      console.log(JSON.parse(Cookie.get("user"))._id);
+      
+    } catch (error) {
+      console.log("User not logged in");
+      
+    }
+
+  })
   return (
     
     <div className='Sell'>
@@ -14,7 +29,7 @@ const Sell = () => {
         method="post"
         enctype="multipart/form-data"
       >
-
+      <input type="text" hidden="true" name='userId' value={userId}  />
         <div class="form-section">
           <h3>Property Details</h3>
           <label for="listingType">Listing Type:</label>
@@ -167,7 +182,7 @@ const Sell = () => {
             placeholder="Add any additional features"
           ></textarea>
         </div>
-
+        
         <button type="submit">Submit Property</button>
       </form>
     </section>

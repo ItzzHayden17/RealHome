@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import SearchAndFilter from '../components/SearchAndFilter'
 import PropertyCard from '../components/PropertyCard'
 import serverUrl from '../serverUrl'
+import Cookie from "js-cookie"
 const Rent = () => {
 
   const [propertiesData,setPropertiesData] = useState(false)
@@ -10,6 +11,30 @@ const Rent = () => {
   function handleData(e){
     setPropertiesData(e)
   }
+
+  const [listingFavArray,setListingFavArray] = useState(["670b842d18110f24ef80c04b"])
+
+  function handleData(e){
+    setPropertiesData(e)
+    console.log(e);
+  }
+
+  function handleFavourite(e){
+    if (listingFavArray.some((favId) => favId === e)) {
+      const updatedFavorites = listingFavArray.filter((favId) => favId !== e);
+      setListingFavArray(updatedFavorites);
+      Cookie.set('favListingArray', JSON.stringify(updatedFavorites), { expires: 7000000 });
+  } else {
+    setListingFavArray((prev) => [...prev, e]);
+      Cookie.set('favListingArray', JSON.stringify([...listingFavArray, e]), { expires: 7000000 });
+  }
+  }
+
+  useEffect(()=>{
+    const favListingArray = Cookie.get("favListingArray")
+    setListingFavArray(JSON.parse(favListingArray))
+  },[])
+
 
   return (
     <div className='BuyOrRent'>
@@ -23,7 +48,7 @@ const Rent = () => {
         <>
         {propertiesData.map((property)=>{
           return(
-            <PropertyCard img={serverUrl+"/image/"+property.images[0]} price={property.price} title={property.listingHeading} description={property.listingDescription} bed={property.bed} bath={property.bath} car={property.car} pet={property.pet} sqrmeter={property.sqrmeter}  />
+            <PropertyCard key={property.id} id={property.id} img={serverUrl+"/image/"+property.images[0]} price={property.price} title={property.listingHeading} description={property.listingDescription} bed={property.bed} bath={property.bath} car={property.car} pet={property.pet} sqrmeter={property.sqrmeter} type={property.type} city={property.city} sellType="rent" isFavourite={listingFavArray.some((id)=>property.id === id)} onClick={handleFavourite}/>
           )
         })}
         </>

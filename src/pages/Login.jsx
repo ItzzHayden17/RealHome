@@ -4,6 +4,15 @@ import serverUrl from '../serverUrl'
 const Login = () => {
 
   const [signUpActive,setSignUpACtive] = useState(false)
+  const [isAgent,setIsAgent] = useState(false)
+
+  function handleAgent(){
+    if (!isAgent) {
+      setIsAgent(true)
+    }else{
+      setIsAgent(false)
+    }
+  }
 
   function handleSignup(e){
     if (signUpActive) {
@@ -24,7 +33,7 @@ const Login = () => {
     <section class="login-section">
       {signUpActive? 
       <>
-       <form class="signup-form" id="signupForm" action={serverUrl+"/signup"} method='POST'>
+       <form class="signup-form" id="signupForm" action={serverUrl+"/signup"} method='POST' enctype="multipart/form-data">
           <h2>Create a RealHome Account</h2>
 
           <label for="name">Name:</label>
@@ -60,13 +69,24 @@ const Login = () => {
             required
           />
 
-          <label for="surname">Mobile number:</label>
+          <label for="number">Mobile number:</label>
           <input
             type="number"
             id="number"
             name="number"
             required
           />
+
+          <div className='isAgent' onClick={handleAgent}> <p>Are you an agent?</p>{isAgent ? <><i class="fa-solid fa-check"></i></>:<><i class="fa-solid fa-xmark"></i></>} </div>
+          {isAgent ? <>
+          <label htmlFor="agentImage">Please upload an image of yourself</label>
+            <input
+            type="file"
+            id="agentImage"
+            name="agentImage"
+            required
+          />
+          </> : <></>}
 
           <button type="submit" class="signup-btn">Sign Up</button>
 

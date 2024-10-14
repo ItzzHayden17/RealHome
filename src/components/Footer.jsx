@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import { Router,Link } from 'react-router-dom'
+import serverUrl from '../serverUrl'
 import Cookie from "js-cookie"
 const Footer = () => {
 
@@ -19,7 +20,7 @@ const Footer = () => {
         <div class="footer-logo-section">
           <img
             class="footer-logo"
-            src="./media/logo2.png"
+            src={serverUrl+"/image/logo2.png"}
             alt="RealHome Logo"
           />
         </div>

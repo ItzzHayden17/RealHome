@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, redirect } from 'react-router-dom'
 import Cookie from "js-cookie"
+import serverUrl from '../serverUrl'
 const Navbar = () => {
   const [user,setUser] = useState(false)
   const [logout,setLogout] = useState(false)
@@ -12,8 +13,6 @@ const Navbar = () => {
   },[])
 
   function handleHover(e){
-    console.log(e);
-    
     if (logout) {
       setLogout(false)
     }else{
@@ -32,7 +31,7 @@ const Navbar = () => {
           <a href="index.html" class="logo">
             <img
               href="index.html"
-              src="./media/logo2.png"
+              src={serverUrl+"/image/logo2.png"}
               alt="RealHome Logo"
             />
           </a>
@@ -41,7 +40,7 @@ const Navbar = () => {
           <li><Link to="/">Home</Link></li>
           <li><Link to="/buy">Buy</Link></li>
           <li><Link to="/rent">Rent</Link></li>
-          {user.isAgent? 
+          {user? 
           <><li><Link to="/sell">Sell</Link></li></>:
           <></>}
           

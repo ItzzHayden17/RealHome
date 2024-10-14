@@ -100,7 +100,7 @@ const Home = () => {
         <li><Link to="/">Home</Link></li>
           <li><Link to="/buy">Buy</Link></li>
           <li><Link to="/rent">Rent</Link></li>
-          {user.isAgent? 
+          {user? 
           <><li><Link to="/sell">Sell</Link></li></>:
           <></>}
           <li><Link to="/agents">Agents</Link></li>
