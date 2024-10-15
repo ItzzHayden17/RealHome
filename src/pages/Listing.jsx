@@ -113,7 +113,7 @@ const PropertyListing = () => {
           <div class="agents">
             <div class="agent-card">
               <h2>Seller / Selling Agent</h2>
-              <img src={serverUrl+"/image/"+agentData.image} alt="Agent Photo" />
+              {agentData.image = ""? <>Private seller</> :<><img src={serverUrl+"/image/"+agentData.image} alt="Agent Photo" /></>}
               <h3>{agentData.name} {agentData.surname}</h3>
               <p>Property Practitioner</p>
                 <div class="button">
