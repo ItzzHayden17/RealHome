@@ -32,8 +32,13 @@ const Favourites = () => {
         console.error('Error fetching data:', error);
       });
 
-      const favListingArray = Cookie.get("favListingArray")
-      setListingFavArray(JSON.parse(favListingArray))
+      try {
+        const favListingArray = Cookie.get("favListingArray")
+        setListingFavArray(JSON.parse(favListingArray))
+      } catch (error) {
+        console.log(error);
+        
+      }
   }, []);
   return (
     <div className='Favourites'>

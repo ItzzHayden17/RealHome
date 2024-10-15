@@ -11,12 +11,13 @@ const PropertyCard = (props) => {
   return (
     
     <div >
-      <Link to={"/listing/"+props.link}>
+      
         <div class="property-card">
           
           <img src={serverUrl+"/image/"+props.img} alt="Property Image" />
           <div class="property-info">
           <div className="favourite">{props.isFavourite? <><i class="fa-solid fa-heart" onClick={handleFavourite}></i></>:<><i class="fa-regular fa-heart" onClick={handleFavourite}></i></>}  </div>
+          <Link to={"/listing/"+props.link}>
             <h3>R{numeral(props.price).format('0,0').replace(/,/g, ' ')} {props.sellType == "rent" ? <>p/m</>:<></>}</h3>
 
             <h4>{props.bed} bedroom {props.type} {props.sellType == "buy" ? <>for sale</>:<>to rent</>} in {props.city}</h4>
@@ -34,9 +35,10 @@ const PropertyCard = (props) => {
               <span><i class="fas fa-paw"></i>{props.pet ? <>Pet-Friendly</>:<>No pets allowed</>}</span>
               <span><i class="fas fa-home"></i>{props.sqrmeter} m2</span>
             </div>
+            </Link>
           </div>
         </div>
-        </Link>
+        
     </div>
   )
 }

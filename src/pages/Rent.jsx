@@ -31,8 +31,13 @@ const Rent = () => {
   }
 
   useEffect(()=>{
-    const favListingArray = Cookie.get("favListingArray")
-    setListingFavArray(JSON.parse(favListingArray))
+    try {
+      const favListingArray = Cookie.get("favListingArray")
+      setListingFavArray(JSON.parse(favListingArray))
+    } catch (error) {
+      console.log(error);
+      
+    }
   },[])
 
 

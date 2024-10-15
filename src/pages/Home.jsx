@@ -169,7 +169,7 @@ const Home = () => {
         {agentsData.map((agent)=>{
           return(
             <div class="agent-card">
-            <img src={serverUrl+"/image/agents/"+agent.image} alt="Agent Photo" />
+            <img src={serverUrl+"/image/"+agent.image} alt="Agent Photo" />
             <h3>{agent.name} {agent.surname}</h3>
             <p>Property Practitioner</p>
           </div>

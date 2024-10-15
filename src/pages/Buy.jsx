@@ -27,14 +27,19 @@ const Buy = () => {
   }
 
   useEffect(()=>{
-    const favListingArray = Cookie.get("favListingArray")
-    setListingFavArray(JSON.parse(favListingArray))
+    try {
+      const favListingArray = Cookie.get("favListingArray")
+      setListingFavArray(JSON.parse(favListingArray))
+    } catch (error) {
+      console.log(error);
+      
+    }
   },[])
 
 
   return (
     <div className='BuyOrRent'>
-      <Navbar/> 
+    <Navbar/> 
     <SearchAndFilter onChange={handleData} sellType="buy"/>
     <section class="properties-list">
       <h2>Properties for <span>Sale</span></h2>

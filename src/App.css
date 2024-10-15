@@ -810,9 +810,7 @@ button[type="submit"]:hover {
   box-sizing: border-box;
 }
 
-a{
-  all: unset;
-}
+
 .favourite{
   color: #d72c41;
   position: absolute;
@@ -835,6 +833,9 @@ a{
 .properties-list {
   padding: 50px;
   text-align: left;
+  a{
+    all: unset;
+  }
 }
 
 .properties-list h2 {
@@ -1275,6 +1276,248 @@ body {
 .edit-wishlist-btn:hover,
 .remove-wishlist-btn:hover {
   background-color: var(--red);
+}
+
+}
+
+.Listing{
+  /* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* //////////////////////////////////// */
+/* Slideshow */
+/* //////////////////////////////////// */
+.slideshow-container {
+  position: relative;
+  max-width: 600px; /* Adjust as needed */
+  margin: auto;
+  overflow: hidden;
+}
+
+.mySlides {
+  display: none;
+}
+
+.mySlides.active {
+  display: block;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.prev {
+  left: 10px; /* Adjust as needed */
+}
+
+.next {
+  right: 10px; /* Adjust as needed */
+}
+
+.dot-container {
+  text-align: center;
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dot:hover {
+  background-color: #717171;
+}
+
+
+.details-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+/* //////////////////////////////////// */
+/* Property Details - 1st Block */
+/* //////////////////////////////////// */
+
+.property-details1 {
+  background-color: #fff;
+  width: 800px;
+  margin: 20px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  color: var(--dark-grey);
+}
+
+.property-details1 h3 {
+  font-family: "Sora", sans-serif;
+  color: var(--dark-grey);
+  padding-top: 20px;
+  font-size: 24px;
+}
+
+.property-details1 h4 {
+  font-family: "Sora", sans-serif;
+  color: var(--red);
+  padding-top: 5px;
+  font-size: 20px;
+}
+
+.property-details1 p {
+  font-family: "Montserrat", sans-serif;
+  color: var(--dark-grey);
+  padding-top: 5px;
+  font-size: 16px;
+}
+
+.icons {
+  background-color: #fff;
+  width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.icons span {
+  font-size: 16px;
+  color: #555;
+}
+
+.icons i {
+  align-items: center;
+}
+
+/* //////////////////////////////////// */
+/* Property Details - 2nd Block */
+/* //////////////////////////////////// */
+
+.property-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.property_info {
+  background-color: #fff;
+  width: 800px;
+  margin-top: 20px;
+  font-size: 18px;
+  color: var(--dark-grey);
+  text-align: center;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.property_info h3 {
+  font-family: "Montserrat", sans-serif;
+  color: var(--dark-grey);
+  font-size: 20px;
+}
+
+.prop-paragraph {
+  text-align: left;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  margin: 20px 0;
+}
+
+.available_rooms  {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+}
+
+.available_rooms p{
+  margin: 5px;
+}
+
+/* //////////////////////////////////// */
+/* Seller Section */
+/* //////////////////////////////////// */
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -40px;
+}
+
+.view-all-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 12px 24px;
+  background-color: var(--purple);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.view-all-btn:hover {
+  background-color: var(--red);
+}
+
+.our-agents {
+  padding-top: 50px;
+  padding-bottom: 100px;
+  text-align: center;
+  background-color: var(--off-white);
+}
+
+.agents {
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.agent-card {
+  width: 220px;
+  text-align: center;
+}
+
+.agent-card img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.agent-card:hover img {
+  transform: scale(1.1);
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
 }
 
 }
