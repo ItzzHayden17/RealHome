@@ -64,6 +64,9 @@ const Home = () => {
       setAgentsData(top3)
       console.log(top3);
       
+    }).catch((err)=>{
+      console.log(err);
+      
     })
   },[])
 

@@ -36,7 +36,7 @@ const Favourites = () => {
         const favListingArray = Cookie.get("favListingArray")
         setListingFavArray(JSON.parse(favListingArray))
       } catch (error) {
-        console.log(error);
+        console.log(error );
         
       }
   }, []);

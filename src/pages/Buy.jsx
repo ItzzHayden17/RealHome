@@ -8,7 +8,7 @@ import Cookie from "js-cookie"
 const Buy = () => {
 
   const [propertiesData,setPropertiesData] = useState(false)
-  const [listingFavArray,setListingFavArray] = useState(["670b81d9ce649ae40b61e666"])
+  const [listingFavArray,setListingFavArray] = useState([])
 
   function handleData(e){
     setPropertiesData(e)
