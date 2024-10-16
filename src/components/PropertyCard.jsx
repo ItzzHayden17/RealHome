@@ -29,7 +29,7 @@ const PropertyCard = (props) => {
               {props.sellType == "rent" ? <>p/m</> : <></>}
             </h3>
 
-            <h4>{props.bed} bedroom {props.type} {props.sellType == "buy" ? <>for sale</>:<>to rent</>} in {props.city}</h4>
+            <h4>{props.bed} bedroom {props.type} {props.sellType == "buy" ? <>for sale</>:<>to rent</>} in {props.suburb}, {props.city}</h4>
             <TextTruncate
               line={1}
               element="p"

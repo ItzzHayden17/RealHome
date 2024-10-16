@@ -695,9 +695,6 @@
     box-sizing: border-box;
   }
 
-<<<<<<< HEAD
-
-=======
   background-color: var(--off-white);
   /* Headings default font */
   h1,
@@ -709,7 +706,6 @@
   .navbar .logo {
     font-family: "Sora", sans-serif;
   }
->>>>>>> c3284d6af9c098af5ccaf0449bcb2c376ffab5f2
 
   /* //////////////////////////////////// */
   /* Sell Page Styles */
@@ -1081,7 +1077,7 @@
     box-sizing: border-box;
   }
 
-<<<<<<< HEAD
+
   .view-all-btn {
     display: block;
     margin-top: 50px;
@@ -1099,13 +1095,11 @@
   }
 
 
-=======
   body {
     font-family: "Montserrat", sans-serif; /* Default body font */
     background-color: var(--off-white);
   }
 
->>>>>>> c3284d6af9c098af5ccaf0449bcb2c376ffab5f2
   /* //////////////////////////////////// */
   /* Agents Page Styles */
   /* //////////////////////////////////// */
@@ -1170,10 +1164,7 @@
   }
 
   .contact-agent-btn {
-<<<<<<< HEAD
 
-=======
->>>>>>> c3284d6af9c098af5ccaf0449bcb2c376ffab5f2
     background-color: var(--purple);
     color: white;
     padding: 10px 20px;
@@ -1183,17 +1174,17 @@
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
-<<<<<<< HEAD
+
     text-decoration: none;
   }
 
   .edit-profile-btn {
     
-=======
+
   }
 
   .edit-profile-btn {
->>>>>>> c3284d6af9c098af5ccaf0449bcb2c376ffab5f2
+
     background-color: var(--red);
     color: white;
     padding: 10px 20px;
@@ -1542,7 +1533,7 @@
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
   }
-<<<<<<< HEAD
+
 
   .agent-card:hover img {
     transform: scale(1.1);
@@ -1761,12 +1752,12 @@
 
   button[type="submit"]:hover {
     background-color: var(--purple);
-=======
+
 
   .agent-card:hover img {
     transform: scale(1.1);
     box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
->>>>>>> c3284d6af9c098af5ccaf0449bcb2c376ffab5f2
+
   }
 }
 @media (max-width: 768px) {
@@ -1833,4 +1824,5 @@
   footer .footer-content {
     flex-direction: column;
   }
+}
 }
