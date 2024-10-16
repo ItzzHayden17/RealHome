@@ -32,7 +32,10 @@ const PropertyCard = (props) => {
             <h4>
               {props.bed} bedroom {props.type}{" "}
               {props.sellType == "buy" ? <>for sale</> : <>to rent</>} in{" "}
+<<<<<<< HEAD
               {props.suburb}, 
+=======
+>>>>>>> c3284d6af9c098af5ccaf0449bcb2c376ffab5f2
               {props.city}
             </h4>
             <TextTruncate

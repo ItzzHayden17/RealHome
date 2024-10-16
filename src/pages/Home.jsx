@@ -62,6 +62,7 @@ const Home = () => {
       const top3 = response.data.slice(0, 3);
       setAgentsData(top3);
       console.log(top3);
+<<<<<<< HEAD
       
     }).catch((err)=>{
       if (err) {
@@ -70,8 +71,12 @@ const Home = () => {
       }
     })
   },[])
+=======
+    });
+  }, []);
+>>>>>>> c3284d6af9c098af5ccaf0449bcb2c376ffab5f2
 
-  function handleHover(e){
+  function handleHover(e) {
     console.log(e);
 
     if (logout) {
@@ -124,11 +129,14 @@ const Home = () => {
             <li>
               <Link to="/favourites">Favourites</Link>
             </li>
+<<<<<<< HEAD
             {user ? <>
             <li>
             <Link to="/wishlist">Wishlist</Link>
           </li>
           </> : <></>}
+=======
+>>>>>>> c3284d6af9c098af5ccaf0449bcb2c376ffab5f2
             {user ? (
               <div onMouseEnter={handleHover} onMouseLeave={handleHover}>
                 <li>
