@@ -62,21 +62,11 @@ const Home = () => {
       const top3 = response.data.slice(0, 3);
       setAgentsData(top3);
       console.log(top3);
-<<<<<<< HEAD
       
-    }).catch((err)=>{
-      if (err) {
-        console.log(err);
-        
-      }
     })
   },[])
-=======
-    });
-  }, []);
->>>>>>> c3284d6af9c098af5ccaf0449bcb2c376ffab5f2
 
-  function handleHover(e) {
+  function handleHover(e){
     console.log(e);
 
     if (logout) {
@@ -92,78 +82,35 @@ const Home = () => {
   }
 
   return (
-    <div className="Home">
-      <header>
-        <nav class="navbar">
-          <div class="logo">
-            <a href="index.html" class="logo">
-              <img
-                href="index.html"
-                src="./media/logo3.png"
-                alt="RealHome Logo"
-              />
-            </a>
-          </div>
-          <ul class="nav-links">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/buy">Buy</Link>
-            </li>
-            <li>
-              <Link to="/rent">Rent</Link>
-            </li>
-            {user ? (
-              <>
-                <li>
-                  <Link to="/sell">List</Link>
-                </li>
-              </> // Changed "Sell" to "List"
-            ) : (
-              <></>
-            )}
-            <li>
-              <Link to="/agents">Agents</Link>
-            </li>
-            <li>
-              <Link to="/favourites">Favourites</Link>
-            </li>
-<<<<<<< HEAD
-            {user ? <>
-            <li>
-            <Link to="/wishlist">Wishlist</Link>
-          </li>
-          </> : <></>}
-=======
->>>>>>> c3284d6af9c098af5ccaf0449bcb2c376ffab5f2
-            {user ? (
-              <div onMouseEnter={handleHover} onMouseLeave={handleHover}>
-                <li>
-                  <a>
-                    <span>Hello {user.name}</span>
-                  </a>
-                </li>
-                {logout ? (
-                  <>
-                    <div className="logout" onClick={handleLogout}>
-                      Logout
-                    </div>
-                  </>
-                ) : (
-                  <></>
-                )}
-              </div>
-            ) : (
-              <>
-                <li>
-                  <Link to="/login">Login</Link>
-                </li>
-              </>
-            )}
-          </ul>
-        </nav>
-      </header>
+    <div className='Home'>
+          <header>
+      <nav class="navbar">
+        <div class="logo">
+          <a href="index.html" class="logo">
+            <img
+              href="index.html"
+              src="./media/logo3.png"
+              alt="RealHome Logo"
+            />
+          </a>
+        </div>
+        <ul class="nav-links">
+        <li><Link to="/">Home</Link></li>
+          <li><Link to="/buy">Buy</Link></li>
+          <li><Link to="/rent">Rent</Link></li>
+          {user? 
+          <><li><Link to="/sell">Sell</Link></li></>:
+          <></>}
+          <li><Link to="/agents">Agents</Link></li>
+          <li><Link to="/favourites">Favourites</Link></li>
+          {user ? 
+          <div onMouseEnter={handleHover} onMouseLeave={handleHover}><li><a><span>Hello {user.name}</span></a></li>
+          {logout? <><div className='logout' onClick={handleLogout}>Logout</div></>:<></>}
+          </div>:
+          <><li><Link to="/login">Login</Link></li></>}
+        </ul>
+      </nav>
+    </header>
       <section class="hero">
         <div class="search-bar">
           <input type="text" placeholder="Search by location, price, type..." />

@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link, redirect } from "react-router-dom";
 import Cookie from "js-cookie";
 import serverUrl from "../serverUrl";
-<<<<<<< HEAD
+
 const Navbar = (params) => {
-=======
-const Navbar = () => {
->>>>>>> c3284d6af9c098af5ccaf0449bcb2c376ffab5f2
+
   const [user, setUser] = useState(false);
   const [logout, setLogout] = useState(false);
 
@@ -66,14 +64,13 @@ const Navbar = () => {
           <li>
             <Link to="/favourites">Favourites</Link>
           </li>
-<<<<<<< HEAD
+
           {user ? <>
             <li>
             <Link to="/wishlist">Wishlist</Link>
           </li>
           </> : <></>}
-=======
->>>>>>> c3284d6af9c098af5ccaf0449bcb2c376ffab5f2
+
           {user ? (
             <div onMouseEnter={handleHover} onMouseLeave={handleHover}>
               <li>
