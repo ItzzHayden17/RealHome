@@ -40,7 +40,7 @@ const Agents = () => {
             <p>Property Practitioner</p>
             <p>Email: {agent.email}</p>
             <p>Phone: 0{agent.number}</p>
-            {userId ? <>{userId == agent._id ? <><button class="edit-profile-btn">Edit profile</button></> :<><button class="contact-agent-btn">Contact</button></>}</> :<>Log in to contact</>}
+            {userId ? <>{userId == agent._id ? <><button class="edit-profile-btn">Edit profile</button></> :<><a href={"/agent/"+agent._id} className='contact-agent-btn'>Contact</a></>}</> :<>Log in to contact</>}
           </div>
         
         )

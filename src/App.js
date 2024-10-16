@@ -9,8 +9,8 @@ import Login from './pages/Login';
 import Rent from './pages/Rent';
 import Sell from './pages/Sell';
 import Footer from './components/Footer';
-import Navbar from './components/Navbar';
-
+import Wishlist from './pages/Wishlist';
+import AgentDetails from './pages/AgentDetails';
 
 
 function App() {
@@ -25,7 +25,9 @@ function App() {
           <Route path="/agents" element={<Agents />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/listing/:id" element={<Listing />} />
+          <Route path="/agent/:id" element={<AgentDetails />} />
       </Routes>
     </BrowserRouter>
     <Footer/>

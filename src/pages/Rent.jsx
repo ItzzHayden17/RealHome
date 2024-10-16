@@ -53,7 +53,7 @@ const Rent = () => {
         <>
         {propertiesData.map((property)=>{
           return(
-            <PropertyCard key={property.id} id={property.id} img={property.images[0]} price={property.price} title={property.listingHeading} description={property.listingDescription} bed={property.bed} bath={property.bath} car={property.car} pet={property.pet} sqrmeter={property.sqrmeter} type={property.type} city={property.city} sellType="rent" link={property._id} isFavourite={listingFavArray.some((id)=>property.id === id)} onClick={handleFavourite}/>
+            <PropertyCard key={property.id} id={property.id} img={property.images[0]} price={property.price} title={property.listingHeading} description={property.listingDescription} bed={property.bed} bath={property.bath} car={property.car} pet={property.pet} sqrmeter={property.sqrmeter} type={property.type} city={property.city} sellType="rent" link={property._id} suburb={property.suburb} isFavourite={listingFavArray.some((id)=>property.id === id)} onClick={handleFavourite}/>
           )
         })}
         </>

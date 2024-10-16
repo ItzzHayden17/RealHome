@@ -5,13 +5,14 @@ const SearchAndFilter = (props) => {
 
 
   const [propertiesData,setPropertiesData] = useState([])
-  const [filters,setFilters] = useState({suburb:"",type:"",price:0})
+  const [filters,setFilters] = useState({suburb:"",type:"",city:"",price:0})
 
   var filteredData = useMemo(() => {
     return propertiesData.filter((data) => {
       return (
-        (filters.suburb == "" || data.suburb.toLowerCase().includes(filters.suburb.toLowerCase())) &&
+        (filters.suburb == "" || data.suburb.toLowerCase().includes(filters.suburb.toLowerCase()) ) &&
         (filters.type == "" || data.type.toLowerCase() == filters.type.toLowerCase()) &&
+        (filters.city == "" || data.city.toLowerCase() == filters.city.toLowerCase()) &&
         (filters.price == "" ||
           data.price >= Number(filters.price) && data.price <= Number(filters.price)+50000) &&
           (data.sellType.toLowerCase() == props.sellType)
@@ -33,7 +34,7 @@ const SearchAndFilter = (props) => {
     axios.get(serverUrl+ '/properties')
       .then((response) => {
         const data = response.data;
-        setPropertiesData(data);     
+        setPropertiesData(data);  
       })
       .catch((error) => {
         console.error('Error fetching data:', error);

@@ -7,25 +7,32 @@ import numeral from 'numeral';
 const PropertyListing = () => {
 
   const [propertyData,setPropertyData] = useState()
-  const [agentData,setAgentData] = useState()
+  const [agentData,setAgentData] = useState({})
+  const [agentPicture,setAgentPicture] = useState({})
   const [images,setImages] = useState()
   const listingId = useParams().id
 
+  console.log(agentData.image);
   
+
   useEffect(()=>{
 
 
     axios.get(serverUrl+"/listing/"+listingId).then((response)=>{
       setPropertyData(response.data[0])
       setImages(response.data[0].images)
-      setAgentData(response.data[1])
+
       
+      if (response.data[1]) {
+        setAgentData(response.data[1])
+        setAgentPicture(response.data[1].image)
+      }
     }).catch((err)=>{
       console.log(err);
     })
 
 
-  },[listingId])
+  },[])
   
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -113,11 +120,11 @@ const PropertyListing = () => {
           <div class="agents">
             <div class="agent-card">
               <h2>Seller / Selling Agent</h2>
-              {agentData.image = ""? <>Private seller</> :<><img src={serverUrl+"/image/"+agentData.image} alt="Agent Photo" /></>}
+              {agentData.image = ""? <>Private seller</> :<><img src={serverUrl+"/image/"+agentPicture} alt="Agent Photo" /></>}
               <h3>{agentData.name} {agentData.surname}</h3>
               <p>Property Practitioner</p>
                 <div class="button">
-                  <a href="#" class="view-all-btn">Contact</a>
+                  <a href={"/agent/"+agentData._id} class="view-all-btn">Contact</a>
                 </div>
             </div>
           </div>
