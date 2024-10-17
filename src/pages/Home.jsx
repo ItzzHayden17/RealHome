@@ -5,10 +5,13 @@ import FeaturedListingCard from "../components/FeaturedListingCard";
 import Cookie from "js-cookie";
 import serverUrl from "../serverUrl";
 import axios from "axios";
+import MapComponent from "../components/MapComponent";
+
 const Home = () => {
   const [user, setUser] = useState(false);
   const [logout, setLogout] = useState(false);
   const [agentsData, setAgentsData] = useState([]);
+  const [markers,setMarkers] = useState([])
 
   const [featuredListings, setFeaturedListings] = useState(false);
 
@@ -62,6 +65,22 @@ const Home = () => {
       const top3 = response.data.slice(0, 3);
       setAgentsData(top3);
       console.log(top3);
+    }).catch((err)=>{
+      console.log(err);
+    })
+
+    axios.get(serverUrl+"/properties").then((response)=>{
+      var responseMarkers = []
+      response.data.forEach((property)=>{
+        if (property.lat && property.lng) {
+          responseMarkers.push({lat:parseFloat(property.lat),lng:parseFloat(property.lng)})
+        }
+      })
+      setMarkers(responseMarkers)
+      console.log(markers);
+      
+    }).catch((err)=>{
+      console.log(err);
       
     })
   },[])
@@ -193,6 +212,10 @@ const Home = () => {
           })}
         </div>
       </section>
+
+     <div className="google-maps">
+      <MapComponent markers={markers} />
+     </div>
     </div>
   );
 };

@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Cookie from "js-cookie";
 import serverUrl from "../serverUrl";
+import AddressAutocomplete from "../components/AutoComplete";
 const Sell = () => {
   const [userId, setUserId] = useState(null);
-
+  const [autoComplete,setAutoComplete] = useState({lat:"",lng:"",address:""})
   useEffect(() => {
     try {
       setUserId(JSON.parse(Cookie.get("user"))._id);
@@ -12,10 +13,21 @@ const Sell = () => {
     } catch (error) {
       console.log("User not logged in");
     }
-  });
+  },[]);
+
+  function handleAutoComplete(e){
+    setAutoComplete(e)
+  }
+
+  useEffect(()=>{
+    console.log(autoComplete);
+    
+  },[autoComplete])
+
   return (
     <div className="Sell">
       <Navbar />
+     
       <section class="sell-property">
         <h2>
           List Your <span>Property</span>
@@ -50,7 +62,10 @@ const Sell = () => {
             <input type="number" id="erfSize" name="erfSize" required />
 
             <label for="address">Address:</label>
-            <input type="text" id="address" name="address" required />
+            <AddressAutocomplete onChange={handleAutoComplete}/>
+            <input type="hidden" id="address" name="address" value={autoComplete.address} required />
+            <input type="hidden" id="lat" name="lat" value={autoComplete.lat} required />
+            <input type="hidden" id="lng" name="lng" value={autoComplete.lng} required />
 
             <label for="city">City:</label>
             <input type="text" id="city" name="city" required />

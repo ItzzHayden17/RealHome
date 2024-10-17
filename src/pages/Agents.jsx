@@ -29,12 +29,10 @@ const Agents = () => {
       <section class="agents-section">
       <h2>Meet Our <span>Agents</span></h2>
       <div class="agents-container">
+
       {agentsData.map((agent)=>{
         return(
-          
           <div class="agent-card">
-            {console.log(agent)
-            }
             <img src={serverUrl+"/image/"+agent.image} alt="Agent 1 Photo" class="agent-photo" />
             <h3>{agent.name} {agent.surname}</h3>
             <p>Property Practitioner</p>

@@ -1365,6 +1365,7 @@
 
   .details-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -1435,13 +1436,15 @@
 
   .property-main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 800px;
   }
 
   .property_info {
     background-color: #fff;
-    width: 800px;
+    
     margin-top: 20px;
     font-size: 18px;
     color: var(--dark-grey);

@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import serverUrl from '../serverUrl'
 import axios from "axios"
 import numeral from 'numeral';
+import MapComponent from '../components/MapComponent'
 const PropertyListing = () => {
 
   const [propertyData,setPropertyData] = useState()
@@ -12,28 +13,25 @@ const PropertyListing = () => {
   const [images,setImages] = useState()
   const listingId = useParams().id
 
-  console.log(agentData.image);
-  
-
   useEffect(()=>{
 
 
     axios.get(serverUrl+"/listing/"+listingId).then((response)=>{
       setPropertyData(response.data[0])
       setImages(response.data[0].images)
-
       
       if (response.data[1]) {
         setAgentData(response.data[1])
+       
         setAgentPicture(response.data[1].image)
       }
     }).catch((err)=>{
       console.log(err);
     })
 
-
   },[])
-  
+
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextSlide = () => {
@@ -88,17 +86,16 @@ const PropertyListing = () => {
               <span><i class="fas fa-home"></i> {propertyData.sqrmeter} m2</span>
             </div>
         </div>
-      </div>
 
-    <div class="property-main">
+        <div class="property-main">
       <div class="property_info">
         <h3>{propertyData.listingHeading}</h3>
         <p class="prop-paragraph">
           {propertyData.listingDescription.split('\n').map((line, index) => (
-            <span key={index}>
+            <p key={index}>
               {line}
               <br />
-            </span>
+            </p>
           ))}
           </p>
 
@@ -114,7 +111,12 @@ const PropertyListing = () => {
             <p>Additional Features: </p>
           </div>
       </div>
+      {propertyData.lat && <><MapComponent markers={[{lat:parseFloat(propertyData.lat),lng:parseFloat(propertyData.lng)}]}  /></>}
     </div>
+      </div>
+
+
+    
     {agentData ? <>
       <section class="our-agents">
           <div class="agents">
