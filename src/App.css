@@ -16,7 +16,6 @@
   span {
     color: var(--red);
   }
-
 }
 .Home {
   /* RESET */
@@ -349,6 +348,32 @@
   .agent-card:hover img {
     transform: scale(1.1);
     box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  /* //////////////////////////////////// */
+  /* Map Section */
+  /* //////////////////////////////////// */
+
+  .google-maps {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 750px;
+    height: 800px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-bottom: -100px;
+    margin-top: -150px;
+  }
+
+  #areas {
+    font-family: "Sora", sans-serif;
+    color: var(--dark-grey);
+    font-size: 32px;
+    margin-bottom: 40px;
+    text-align: center;
   }
 
   /* //////////////////////////////////// */
@@ -1077,7 +1102,6 @@
     box-sizing: border-box;
   }
 
-
   .view-all-btn {
     display: block;
     margin-top: 50px;
@@ -1090,10 +1114,9 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
   }
 
-  .view-all-btn:hover{
+  .view-all-btn:hover {
     background-color: var(--red);
   }
-
 
   body {
     font-family: "Montserrat", sans-serif; /* Default body font */
@@ -1164,7 +1187,6 @@
   }
 
   .contact-agent-btn {
-
     background-color: var(--purple);
     color: white;
     padding: 10px 20px;
@@ -1179,12 +1201,9 @@
   }
 
   .edit-profile-btn {
-    
-
   }
 
   .edit-profile-btn {
-
     background-color: var(--red);
     color: white;
     padding: 10px 20px;
@@ -1444,7 +1463,7 @@
 
   .property_info {
     background-color: #fff;
-    
+
     margin-top: 20px;
     font-size: 18px;
     color: var(--dark-grey);
@@ -1537,14 +1556,13 @@
     transition: transform 0.3s ease;
   }
 
-
   .agent-card:hover img {
     transform: scale(1.1);
     box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
   }
 }
 
-.Wishlist{
+.Wishlist {
   .sell-property {
     max-width: 800px;
     margin: 50px auto;
@@ -1564,6 +1582,50 @@
 
   .form-section {
     margin-bottom: 30px;
+    /* margin-right: 27px; */
+  }
+
+  .form-section #price {
+    width: 97%;
+  }
+
+  .form-section #bed {
+    width: 97%;
+  }
+
+  .form-section #bath {
+    width: 97%;
+  }
+
+  .form-section #car {
+    width: 97%;
+  }
+
+  .form-section #type {
+    width: 97%;
+  }
+
+  .form-section #suburb {
+    width: 97%;
+  }
+
+  .form-section #city {
+    width: 97%;
+  }
+
+  .form-section #province {
+    width: 97%;
+    margin-bottom: 40px;
+  }
+
+  .form-section #submit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 20%;
+    margin: 0 auto;
   }
 
   .form-section h3 {
@@ -1636,8 +1698,8 @@
     }
   }
 }
-.AgentDetails{
-  .agent-card{
+.AgentDetails {
+  .agent-card {
     max-width: 800px;
     margin: 50px auto;
     padding: 20px;
@@ -1645,22 +1707,22 @@
     border-radius: 10px;
     box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
   }
-  .card{
+  .card {
     display: flex;
     flex-direction: row;
   }
-  .image-container{
-    img{
+  .image-container {
+    img {
       width: 200px;
       border-radius: 5px;
       margin-left: 20px;
     }
   }
-  
-  .details-container{
-    margin:0 100px;
 
-      button{
+  .details-container {
+    margin: 0 100px;
+
+    button {
       background-color: var(--purple);
       color: white;
       padding: 10px 20px;
@@ -1672,8 +1734,8 @@
       transition: background-color 0.3s ease;
     }
 
-    button:hover{
-      background-color: var(--red); 
+    button:hover {
+      background-color: var(--red);
     }
   }
 
@@ -1756,76 +1818,74 @@
   button[type="submit"]:hover {
     background-color: var(--purple);
 
-
-  .agent-card:hover img {
-    transform: scale(1.1);
-    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
-
+    .agent-card:hover img {
+      transform: scale(1.1);
+      box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
+    }
   }
-}
-@media (max-width: 768px) {
-  .navbar .nav-links {
-    gap: 20px;
-    font-size: 18px;
-  }
+  @media (max-width: 768px) {
+    .navbar .nav-links {
+      gap: 20px;
+      font-size: 18px;
+    }
 
-  .featured-listings h2,
-  .our-agents h2,
-  .about-us-title {
-    font-size: 28px;
-  }
+    .featured-listings h2,
+    .our-agents h2,
+    .about-us-title {
+      font-size: 28px;
+    }
 
-  .listing-card img,
-  .agent-card img {
-    height: 150px;
-    width: 150px;
-  }
+    .listing-card img,
+    .agent-card img {
+      height: 150px;
+      width: 150px;
+    }
 
-  footer .footer-content {
-    flex-direction: column;
-    gap: 30px;
-  }
-}
-
-@media (max-width: 480px) {
-  .navbar .nav-links {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+    footer .footer-content {
+      flex-direction: column;
+      gap: 30px;
+    }
   }
 
-  .hero {
-    height: 60vh;
-  }
+  @media (max-width: 480px) {
+    .navbar .nav-links {
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
 
-  .featured-listings h2,
-  .our-agents h2,
-  .about-us-title {
-    font-size: 24px;
-  }
+    .hero {
+      height: 60vh;
+    }
 
-  .search-bar {
-    flex-direction: column;
-    gap: 10px;
-    height: auto;
-  }
+    .featured-listings h2,
+    .our-agents h2,
+    .about-us-title {
+      font-size: 24px;
+    }
 
-  .search-bar input {
-    font-size: 16px;
-  }
+    .search-bar {
+      flex-direction: column;
+      gap: 10px;
+      height: auto;
+    }
 
-  .search-bar button i {
-    font-size: 20px;
-  }
+    .search-bar input {
+      font-size: 16px;
+    }
 
-  .listing-card img,
-  .agent-card img {
-    height: 120px;
-    width: 120px;
-  }
+    .search-bar button i {
+      font-size: 20px;
+    }
 
-  footer .footer-content {
-    flex-direction: column;
+    .listing-card img,
+    .agent-card img {
+      height: 120px;
+      width: 120px;
+    }
+
+    footer .footer-content {
+      flex-direction: column;
+    }
   }
-}
 }

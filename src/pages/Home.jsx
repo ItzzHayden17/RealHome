@@ -11,7 +11,7 @@ const Home = () => {
   const [user, setUser] = useState(false);
   const [logout, setLogout] = useState(false);
   const [agentsData, setAgentsData] = useState([]);
-  const [markers,setMarkers] = useState([])
+  const [markers, setMarkers] = useState([]);
 
   const [featuredListings, setFeaturedListings] = useState(false);
 
@@ -61,31 +61,38 @@ const Home = () => {
       setUser(JSON.parse(Cookie.get("user")));
     }
 
-    axios.get(serverUrl + "/all-agents").then((response) => {
-      const top3 = response.data.slice(0, 3);
-      setAgentsData(top3);
-      console.log(top3);
-    }).catch((err)=>{
-      console.log(err);
-    })
-
-    axios.get(serverUrl+"/properties").then((response)=>{
-      var responseMarkers = []
-      response.data.forEach((property)=>{
-        if (property.lat && property.lng) {
-          responseMarkers.push({lat:parseFloat(property.lat),lng:parseFloat(property.lng)})
-        }
+    axios
+      .get(serverUrl + "/all-agents")
+      .then((response) => {
+        const top3 = response.data.slice(0, 3);
+        setAgentsData(top3);
+        console.log(top3);
       })
-      setMarkers(responseMarkers)
-      console.log(markers);
-      
-    }).catch((err)=>{
-      console.log(err);
-      
-    })
-  },[])
+      .catch((err) => {
+        console.log(err);
+      });
 
-  function handleHover(e){
+    axios
+      .get(serverUrl + "/properties")
+      .then((response) => {
+        var responseMarkers = [];
+        response.data.forEach((property) => {
+          if (property.lat && property.lng) {
+            responseMarkers.push({
+              lat: parseFloat(property.lat),
+              lng: parseFloat(property.lng),
+            });
+          }
+        });
+        setMarkers(responseMarkers);
+        console.log(markers);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  function handleHover(e) {
     console.log(e);
 
     if (logout) {
@@ -101,35 +108,73 @@ const Home = () => {
   }
 
   return (
-    <div className='Home'>
-          <header>
-      <nav class="navbar">
-        <div class="logo">
-          <a href="index.html" class="logo">
-            <img
-              href="index.html"
-              src="./media/logo3.png"
-              alt="RealHome Logo"
-            />
-          </a>
-        </div>
-        <ul class="nav-links">
-        <li><Link to="/">Home</Link></li>
-          <li><Link to="/buy">Buy</Link></li>
-          <li><Link to="/rent">Rent</Link></li>
-          {user? 
-          <><li><Link to="/sell">Sell</Link></li></>:
-          <></>}
-          <li><Link to="/agents">Agents</Link></li>
-          <li><Link to="/favourites">Favourites</Link></li>
-          {user ? 
-          <div onMouseEnter={handleHover} onMouseLeave={handleHover}><li><a><span>Hello {user.name}</span></a></li>
-          {logout? <><div className='logout' onClick={handleLogout}>Logout</div></>:<></>}
-          </div>:
-          <><li><Link to="/login">Login</Link></li></>}
-        </ul>
-      </nav>
-    </header>
+    <div className="Home">
+      <header>
+        <nav class="navbar">
+          <div class="logo">
+            <a href="index.html" class="logo">
+              <img
+                href="index.html"
+                src="./media/logo3.png"
+                alt="RealHome Logo"
+              />
+            </a>
+          </div>
+          <ul class="nav-links">
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/buy">Buy</Link>
+            </li>
+            <li>
+              <Link to="/rent">Rent</Link>
+            </li>
+            {user ? (
+              <>
+                <li>
+                  <Link to="/sell">List</Link>
+                </li>
+              </>
+            ) : (
+              <></>
+            )}
+            <li>
+              <Link to="/agents">Agents</Link>
+            </li>
+            <li>
+              <Link to="/favourites">Favourites</Link>
+            </li>
+            <li>
+              <Link to="/wishlist">Wishlist</Link>
+            </li>
+            {user ? (
+              <div onMouseEnter={handleHover} onMouseLeave={handleHover}>
+                <li>
+                  <a>
+                    <span>Hello {user.name}</span>
+                  </a>
+                </li>
+                {logout ? (
+                  <>
+                    <div className="logout" onClick={handleLogout}>
+                      Logout
+                    </div>
+                  </>
+                ) : (
+                  <></>
+                )}
+              </div>
+            ) : (
+              <>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+              </>
+            )}
+          </ul>
+        </nav>
+      </header>
       <section class="hero">
         <div class="search-bar">
           <input type="text" placeholder="Search by location, price, type..." />
@@ -213,9 +258,12 @@ const Home = () => {
         </div>
       </section>
 
-     <div className="google-maps">
-      <MapComponent markers={markers} />
-     </div>
+      <div className="google-maps">
+        <h2 id="areas">
+          Areas <span>Serviced</span>
+        </h2>
+        <MapComponent markers={markers} />
+      </div>
     </div>
   );
 };
