@@ -12,7 +12,7 @@ const Home = () => {
   const [logout, setLogout] = useState(false);
   const [agentsData, setAgentsData] = useState([]);
   const [markers, setMarkers] = useState([]);
-
+  const [menuActive, setMenuActive] = useState(false);
   const [featuredListings, setFeaturedListings] = useState(false);
 
   useEffect(() => {
@@ -102,6 +102,12 @@ const Home = () => {
     }
   }
 
+  
+
+  const toggleMenu = () => {
+    setMenuActive(!menuActive);
+  };
+
   function handleLogout(e) {
     Cookie.remove("user");
     window.location.reload();
@@ -112,15 +118,15 @@ const Home = () => {
       <header>
         <nav class="navbar">
           <div class="logo">
-            <a href="index.html" class="logo">
+            <a href="/" class="logo">
               <img
-                href="index.html"
+                href="/"
                 src="./media/logo3.png"
                 alt="RealHome Logo"
               />
             </a>
           </div>
-          <ul class="nav-links">
+          <ul className={`nav-links ${menuActive ? "active" : ""}`}>
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -173,6 +179,11 @@ const Home = () => {
               </>
             )}
           </ul>
+          <div className="burger" onClick={toggleMenu}>
+            <div className={`line ${menuActive ? "open" : ""}`}></div>
+            <div className={`line ${menuActive ? "open" : ""}`}></div>
+            <div className={`line ${menuActive ? "open" : ""}`}></div>
+          </div>
         </nav>
       </header>
       <section class="hero">

@@ -7,6 +7,7 @@ const Navbar = (params) => {
 
   const [user, setUser] = useState(false);
   const [logout, setLogout] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     if (Cookie.get("user")) {
@@ -26,19 +27,29 @@ const Navbar = (params) => {
     Cookie.remove("user");
     window.location.reload();
   }
+
+  function handleMenuToggle() {
+    setMenuOpen(!menuOpen); // Toggle menu state
+  }
+
   return (
     <div className="Navbar">
       <nav class="navbar">
         <div class="logo">
-          <a href="index.html" class="logo">
+          <a href="/" class="logo">
             <img
-              href="index.html"
+              href="/"
               src={serverUrl + "/image/logo2.png"}
               alt="RealHome Logo"
             />
           </a>
         </div>
-        <ul class="nav-links">
+        <div className="burger" onClick={handleMenuToggle}>
+          <div className={`line ${menuOpen ? "open" : ""}`}></div>
+          <div className={`line ${menuOpen ? "open" : ""}`}></div>
+          <div className={`line ${menuOpen ? "open" : ""}`}></div>
+        </div>
+        <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
           <li>
             <Link to="/">Home</Link>
           </li>
