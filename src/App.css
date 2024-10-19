@@ -1263,27 +1263,51 @@
   }
 }
 
+/* //////////////////////////////////// */
+/* Contact Agent Page */
+/* //////////////////////////////////// */
+
 .AgentDetails {
-  .agent-card {
-    padding: 20px;
-    background-color: #ef1717;
+  .agent-details {
+    margin-left: 29%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 600px;
+    background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
   }
 
-  .card {
+  .agent-details h1 {
+    font-family: "Sora", sans-serif;
+    margin-top: -10px;
+    margin-bottom: 5px;
+  }
+
+  button {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    width: 50%;
+    margin-top: 10px;
+    margin-bottom: 1px;
   }
-  .image-container {
-    img {
-      width: 200px;
-      border-radius: 5px;
-      margin-left: 20px;
-    }
+
+  /* .image-container {
+    justify-content: center;
+    width: auto;
+    height: 300px;
+    border-radius: 5px;
+  } */
+
+  .image-container img {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
   }
+
   .details-container {
-    margin: 0 100px;
     button {
       background-color: var(--purple);
       color: white;
@@ -1295,12 +1319,13 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
+
     button:hover {
       background-color: var(--red);
     }
   }
   .sell-property {
-    max-width: 800px;
+    max-width: 760px;
     margin: 50px auto;
     padding: 20px;
     background-color: #f9f9f9;
@@ -1315,7 +1340,7 @@
     font-size: 36px;
   }
   .form-section {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 
   .form-section h3 {
@@ -1336,7 +1361,7 @@
   .form-section input[type="number"],
   .form-section textarea,
   .form-section select {
-    width: 100%;
+    width: 97%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;

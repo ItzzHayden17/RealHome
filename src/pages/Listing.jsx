@@ -46,7 +46,7 @@ const PropertyListing = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 1000000); // Change slide every 10 seconds -- revert to 3000
+    const interval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
     return () => clearInterval(interval);
   }, [images.length]);
 
