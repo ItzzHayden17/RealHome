@@ -72,21 +72,19 @@ const PropertyListing = () => {
             </div>
           ))}
 
-          <a className="prev" onClick={prevSlide}>
-            &#10094;
-          </a>
-          <a className="next" onClick={nextSlide}>
-            &#10095;
-          </a>
-
-          <div className="dot-container">
-            {images.map((_, index) => (
-              <span
-                className="dot"
-                onClick={() => goToSlide(index)}
-                key={index}
-              ></span>
-            ))}
+          <div class="available_rooms">
+            <p>{propertyData.kitchen && <>Kitchen</>}</p>
+            <p>{propertyData.livingRoom && <>Living Room</>} </p>
+            <p>{propertyData.study && <>Study/Office</>}</p>
+            <p>{propertyData.garage && <>Garage</>}</p>
+            <p>{propertyData.garden && <>Garden</>}</p>
+            <p>{propertyData.pool && <>Pool</>}</p>
+            <p>{propertyData.flatlet && <>Flatlet</>}</p>
+            <p>
+              {propertyData.additionalFeatures && (
+                <>Additional Features:{propertyData.additionalFeatures}</>
+              )}
+            </p>
           </div>
         </div>
       ) : (

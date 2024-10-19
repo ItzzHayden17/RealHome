@@ -584,29 +584,15 @@
       margin-right: 8px;
       font-size: 20px;
     }
+    footer{
+      
+    }
 
     @media (max-width: 768px) {
-      .footer-content {
-        display: block;
-      }
-
-      .footer-links {
-        justify-content: center;
-        margin-top: 10px;
-      }
-
-      .footer-social {
-        margin-top: 10px;
-      }
-
-      .footer-logo {
-        height: 100px;
-        width: 100px;
-      }
-
-      footer p {
-        font-size: 12px;
-        margin-top: 10px;
+      .Footer{
+        footer{
+          
+        }
       }
     }
 
@@ -840,6 +826,7 @@
   }
 
   .footer-links {
+    text-align: center;
     flex-direction: column;
     flex: 2;
     display: flex;

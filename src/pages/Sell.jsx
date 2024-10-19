@@ -162,7 +162,7 @@ const Sell = () => {
             <input
               type="number"
               id="carports"
-              name="carports"
+              name="garage"
               placeholder="2 if double garage"
             />
 
@@ -179,7 +179,7 @@ const Sell = () => {
               <input
                 type="checkbox"
                 id="living-room"
-                name="features"
+                name="livingRoom"
                 value="Living Room"
               />
 
@@ -187,7 +187,7 @@ const Sell = () => {
               <input
                 type="checkbox"
                 id="study"
-                name="features"
+                name="study"
                 value="Study/Office"
               />
 
@@ -203,7 +203,7 @@ const Sell = () => {
               <input
                 type="checkbox"
                 id="carport"
-                name="features"
+                name="carport"
                 value="Carport"
               />
 
@@ -211,18 +211,18 @@ const Sell = () => {
               <input
                 type="checkbox"
                 id="garden"
-                name="features"
+                name="garden"
                 value="Garden"
               />
 
               <label for="pool">Pool:</label>
-              <input type="checkbox" id="pool" name="features" value="Pool" />
+              <input type="checkbox" id="pool" name="pool" value="Pool" />
 
               <label for="flatlet">Flatlet:</label>
               <input
                 type="checkbox"
                 id="flatlet"
-                name="features"
+                name="flatlet"
                 value="Flatlet"
               />
             </div>
