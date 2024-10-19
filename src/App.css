@@ -116,7 +116,7 @@
       top: 120px;
       right: 10px;
       background-color: rgba(0, 0, 0, 0.9);
-      height: 350px;
+      height: 400px;
       width: 250px;
       border-radius: 10px;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -491,17 +491,6 @@
     font-family: "Montserrat", sans-serif;
   }
   
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    padding: 20px;
-    border-bottom: 1px solid #ffffff33;
-    flex-wrap: wrap;
-  }
-  
   .footer-logo-section,
   .footer-social {
     flex: 1;
@@ -576,9 +565,7 @@
   
   @media (max-width: 768px) {
     .footer-content {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+      display: block;
     }
   
     .footer-links {
@@ -764,7 +751,7 @@
       top: 120px;
       right: 10px;
       background-color: rgba(0, 0, 0, 0.9); /* Black with opacity */
-      height: 300px;
+      height: 400px;
       width: 250px;
       border-radius: 10px;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -1345,6 +1332,118 @@
   }
 }
 
+.AgentDetails {
+  .agent-card {
+    padding: 20px;
+    background-color: #ef1717;
+    border-radius: 10px;
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+  }
+  .card {
+    display: flex;
+    flex-direction: row;
+  }
+  .image-container {
+    img {
+      width: 200px;
+      border-radius: 5px;
+      margin-left: 20px;
+    }
+  }
+  .details-container {
+    margin: 0 100px;
+    button {
+      background-color: var(--purple);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-family: "Sora", sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: var(--red);
+    }
+  }
+  .sell-property {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+  }
+  .sell-property h2 {
+    font-family: "Sora", sans-serif;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--dark-grey);
+    font-size: 36px;
+  }
+  .form-section {
+    margin-bottom: 30px;
+  }
+
+  .form-section h3 {
+    font-family: "Sora", sans-serif;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    color: var(--dark-grey);
+  }
+  .form-section label {
+    font-family: "Montserrat", sans-serif;
+    display: block;
+    margin-bottom: 8px;
+    color: var(--dark-grey);
+  }
+  .form-section input[type="text"],
+  .form-section input[type="email"],
+  .form-section input[type="tel"],
+  .form-section input[type="number"],
+  .form-section textarea,
+  .form-section select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    color: var(--dark-grey);
+  }
+  .form-section input[type="checkbox"] {
+    /* margin-right: 10px; */
+    margin-bottom: 11px;
+    margin-left: 10px;
+  }
+  .form-section input[type="file"] {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+  }
+  button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--red);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-family: "Sora", sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button[type="submit"]:hover {
+    background-color: var(--purple);
+    .agent-card:hover img {
+      transform: scale(1.1);
+      box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .main-logo img {
     width: 200px;
@@ -1818,8 +1917,7 @@
 }
 
 
-
-.Wishlist {
+.Wishlist{
   .sell-property {
     max-width: 800px;
     margin: 50px auto;
@@ -1828,7 +1926,6 @@
     border-radius: 10px;
     box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
   }
-
   .sell-property h2 {
     font-family: "Sora", sans-serif;
     text-align: center;
@@ -1836,18 +1933,21 @@
     color: var(--dark-grey);
     font-size: 36px;
   }
-
   .form-section {
     margin-bottom: 30px;
   }
-
+  .form-section h3 {
+    font-family: "Sora", sans-serif;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    color: var(--dark-grey);
+  }
   .form-section label {
     font-family: "Montserrat", sans-serif;
     display: block;
     margin-bottom: 8px;
     color: var(--dark-grey);
   }
-
   .form-section input[type="text"],
   .form-section input[type="email"],
   .form-section input[type="tel"],
@@ -1863,7 +1963,15 @@
     font-size: 1rem;
     color: var(--dark-grey);
   }
-
+  .form-section input[type="checkbox"] {
+    /* margin-right: 10px; */
+    margin-bottom: 11px;
+    margin-left: 10px;
+  }
+  .form-section input[type="file"] {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+  }
   button[type="submit"] {
     display: block;
     width: 100%;
@@ -1877,11 +1985,9 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-
   button[type="submit"]:hover {
     background-color: var(--purple);
   }
-
   .additional-features {
     height: 100%;
     display: flex;
@@ -1889,52 +1995,12 @@
     justify-content: center;
     flex-wrap: wrap;
 
+.agent-card:hover img {
+  transform: scale(1.1);
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
     input {
       margin: auto;
     }
   }
-
-  @media (max-width: 768px) {
-    .sell-property {
-      padding: 15px;
-    }
-
-    .sell-property h2 {
-      font-size: 28px;
-    }
-
-    .form-section {
-      margin-bottom: 20px;
-    }
-
-    .form-section input[type="text"],
-    .form-section input[type="email"],
-    .form-section input[type="tel"],
-    .form-section input[type="number"],
-    .form-section textarea,
-    .form-section select {
-      padding: 3px;
-    }
-
-    button[type="submit"] {
-      padding: 12px;
-      font-size: 1rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .sell-property {
-      margin: 20px;
-    }
-
-    .sell-property h2 {
-      font-size: 24px;
-    }
-
-    button[type="submit"] {
-      padding: 10px;
-      font-size: 0.9rem;
-    }
-  }
 }
-
+}

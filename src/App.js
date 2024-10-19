@@ -1,4 +1,5 @@
 import './App.css';
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './pages/Home';
 import Agents from './pages/Agents';
@@ -13,9 +14,13 @@ import Wishlist from './pages/Wishlist';
 import AgentDetails from './pages/AgentDetails';
 
 
+
 function App() {
+
+
   return (
     <div className="App">
+      
     <BrowserRouter>
       <Routes>
           <Route path="/" element={<Home />} />
@@ -30,6 +35,7 @@ function App() {
           <Route path="/agent/:id" element={<AgentDetails />} />
       </Routes>
     </BrowserRouter>
+    
     <Footer/>
     </div>
   );
