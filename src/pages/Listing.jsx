@@ -77,7 +77,7 @@ const PropertyListing = () => {
             <h3>{propertyData.bed} bedroom {propertyData.type} {propertyData.sellType == "buy" ? <>to buy</> :<>to rent</>} in {propertyData.suburb}</h3>
             <h4>R{numeral(propertyData.price).format('0,0').replace(/,/g, ' ')}</h4>
             <p><span>Address</span></p>   
-            <p>Rates: R{numeral(propertyData.levies).format('0,0').replace(/,/g, ' ')}  Levies: R{numeral(propertyData.rates).format('0,0').replace(/,/g, ' ')}</p>                         
+            <p>Rates: R{numeral(propertyData.rates).format('0,0').replace(/,/g, ' ')}  Levies: R{numeral(propertyData.levies).format('0,0').replace(/,/g, ' ')}</p>                         
             <div class="icons">
               <span><i class="fas fa-bed"></i> {propertyData.bed}</span>
               <span><i class="fas fa-bath"></i> {propertyData.bath}</span>
@@ -100,15 +100,14 @@ const PropertyListing = () => {
           </p>
 
           <div class="available_rooms">
-            <p>Kitchen: </p>
-            <p>Living Room: </p>
-            <p>Study/Office: </p>
-            <p>Garage: </p>
-            <p>Carport: </p>
-            <p>Garden: </p>
-            <p>Pool: </p>
-            <p>Flatlet: </p>
-            <p>Additional Features: </p>
+            <p>{propertyData.kitchen  && <>Kitchen</>}</p>
+            <p>{propertyData.livingRoom  && <>Living Room</>} </p>
+            <p>{propertyData.study  && <>Study/Office</>}</p>
+            <p>{propertyData.garage  && <>Garage</>}</p>
+            <p>{propertyData.garden  && <>Garden</>}</p>
+            <p>{propertyData.pool  && <>Pool</>}</p>
+            <p>{propertyData.flatlet  && <>Flatlet</>}</p>
+            <p>{propertyData.additionalFeatures  && <>Additional Features:{propertyData.additionalFeatures}</>}</p>
           </div>
       </div>
       {propertyData.lat && <><MapComponent markers={[{lat:parseFloat(propertyData.lat),lng:parseFloat(propertyData.lng)}]}  /></>}
