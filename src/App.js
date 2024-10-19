@@ -1,28 +1,23 @@
-import './App.css';
-import { useEffect } from 'react';
+import "./App.css";
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './pages/Home';
-import Agents from './pages/Agents';
-import Buy from './pages/Buy';
-import Favourites from './pages/Favourites';
-import Listing from './pages/Listing';
-import Login from './pages/Login';
-import Rent from './pages/Rent';
-import Sell from './pages/Sell';
-import Footer from './components/Footer';
-import Wishlist from './pages/Wishlist';
-import AgentDetails from './pages/AgentDetails';
-
-
+import Home from "./pages/Home";
+import Agents from "./pages/Agents";
+import Buy from "./pages/Buy";
+import Favourites from "./pages/Favourites";
+import Listing from "./pages/Listing";
+import Login from "./pages/Login";
+import Rent from "./pages/Rent";
+import Sell from "./pages/Sell";
+import Footer from "./components/Footer";
+import Wishlist from "./pages/Wishlist";
+import AgentDetails from "./pages/AgentDetails";
 
 function App() {
-
-
   return (
     <div className="App">
-      
-    <BrowserRouter>
-      <Routes>
+      <BrowserRouter>
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/buy" element={<Buy />} />
           <Route path="/rent" element={<Rent />} />
@@ -33,10 +28,10 @@ function App() {
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/listing/:id" element={<Listing />} />
           <Route path="/agent/:id" element={<AgentDetails />} />
-      </Routes>
-    </BrowserRouter>
-    
-    <Footer/>
+        </Routes>
+      </BrowserRouter>
+
+      <Footer />
     </div>
   );
 }

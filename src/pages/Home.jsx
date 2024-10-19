@@ -102,8 +102,6 @@ const Home = () => {
     }
   }
 
-  
-
   const toggleMenu = () => {
     setMenuActive(!menuActive);
   };
@@ -119,11 +117,7 @@ const Home = () => {
         <nav class="navbar">
           <div class="logo">
             <a href="/" class="logo">
-              <img
-                href="/"
-                src="./media/logo3.png"
-                alt="RealHome Logo"
-              />
+              <img href="/" src="./media/logo3.png" alt="RealHome Logo" />
             </a>
           </div>
           <ul className={`nav-links ${menuActive ? "active" : ""}`}>
@@ -273,7 +267,9 @@ const Home = () => {
         <h2 id="areas">
           Areas <span>Serviced</span>
         </h2>
-        <MapComponent markers={markers} />
+        <div class="map-only">
+          <MapComponent markers={markers} />
+        </div>
       </div>
     </div>
   );
