@@ -9,7 +9,7 @@ import MapComponent from "../components/MapComponent";
 const PropertyListing = () => {
   const [propertyData, setPropertyData] = useState();
   const [agentData, setAgentData] = useState({});
-  const [agentPicture, setAgentPicture] = useState('');
+  const [agentPicture, setAgentPicture] = useState("");
   const [images, setImages] = useState([]);
   const listingId = useParams().id;
 
@@ -36,7 +36,9 @@ const PropertyListing = () => {
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
   };
 
   const goToSlide = (index) => {
@@ -44,7 +46,7 @@ const PropertyListing = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 3000); // Change slide every 3 seconds
+    const interval = setInterval(nextSlide, 1000000); // Change slide every 10 seconds -- revert to 3000
     return () => clearInterval(interval);
   }, [images.length]);
 
@@ -55,7 +57,9 @@ const PropertyListing = () => {
         <div className="slideshow-container">
           {images.map((image, index) => (
             <div
-              className={`mySlides fade ${currentIndex === index ? "active" : ""}`}
+              className={`mySlides fade ${
+                currentIndex === index ? "active" : ""
+              }`}
               key={index}
             >
               <img
@@ -65,9 +69,12 @@ const PropertyListing = () => {
               />
             </div>
           ))}
-          <a className="prev" onClick={prevSlide}>&#10094;</a>
-          <a className="next" onClick={nextSlide}>&#10095;</a>
-
+          <a className="prev" onClick={prevSlide}>
+            &#10094;
+          </a>
+          <a className="next" onClick={nextSlide}>
+            &#10095;
+          </a>
         </div>
       ) : (
         <p>No images available</p>
@@ -78,21 +85,19 @@ const PropertyListing = () => {
           <div className="details-container">
             <div className="property-details1">
               <h3>
-                {propertyData.bed} bedroom {propertyData.type}{" "}
-                {propertyData.sellType === "buy" ? <>to buy</> : <>to rent</>} in{" "}
-                {propertyData.suburb}
+                {propertyData.bed} Bedroom {propertyData.type}{" "}
+                {propertyData.sellType === "buy" ? <>to Buy</> : <>to Rent</>}{" "}
+                in {propertyData.suburb}
               </h3>
               <h4>
                 R{numeral(propertyData.price).format("0,0").replace(/,/g, " ")}
               </h4>
-              <p>
-                <span>Address</span>
-              </p>
+              <p>{propertyData.address}</p>
               <p>
                 Rates: R
-                {numeral(propertyData.levies).format("0,0").replace(/,/g, " ")}{" "}
+                {numeral(propertyData.rates).format("0,0").replace(/,/g, " ")}{" "}
                 Levies: R
-                {numeral(propertyData.rates).format("0,0").replace(/,/g, " ")}
+                {numeral(propertyData.levies).format("0,0").replace(/,/g, " ")}
               </p>
               <div className="icons">
                 <span>
@@ -118,29 +123,32 @@ const PropertyListing = () => {
               <div className="property_info">
                 <h3>{propertyData.listingHeading}</h3>
                 <p className="prop-paragraph">
-                  {propertyData.listingDescription.split("\n").map((line, index) => (
-                    <p key={index}>
-                      {line}
-                      <br />
-                    </p>
-                  ))}
+                  {propertyData.listingDescription
+                    .split("\n")
+                    .map((line, index) => (
+                      <p key={index}>
+                        {line}
+                        <br />
+                      </p>
+                    ))}
                 </p>
 
-
                 <div className="available_rooms">
-            <p>{propertyData.kitchen && <>Kitchen</>}</p>
-            <p>{propertyData.livingRoom && <>Living Room</>}</p>
-            <p>{propertyData.study && <>Study/Office</>}</p>
-            <p>{propertyData.garage && <>Garage</>}</p>
-            <p>{propertyData.garden && <>Garden</>}</p>
-            <p>{propertyData.pool && <>Pool</>}</p>
-            <p>{propertyData.flatlet && <>Flatlet</>}</p>
-            <p>
-              {propertyData.additionalFeatures && (
-                <>Additional Features: {propertyData.additionalFeatures}</>
-              )}
-            </p>
-          </div>
+                  <p>{propertyData.kitchen && <>Kitchen</>}</p>
+                  <p>{propertyData.livingRoom && <>Living Room</>}</p>
+                  <p>{propertyData.study && <>Study/Office</>}</p>
+                  <p>{propertyData.garage && <>Garage</>}</p>
+                  <p>{propertyData.garden && <>Garden</>}</p>
+                  <p>{propertyData.pool && <>Pool</>}</p>
+                  <p>{propertyData.flatlet && <>Flatlet</>}</p>
+                  <p>
+                    {propertyData.additionalFeatures && (
+                      <>
+                        Additional Features: {propertyData.additionalFeatures}
+                      </>
+                    )}
+                  </p>
+                </div>
               </div>
               {propertyData.lat && (
                 <MapComponent
@@ -175,7 +183,10 @@ const PropertyListing = () => {
                   </h3>
                   <p>Property Practitioner</p>
                   <div className="button">
-                    <a href={`/agent/${agentData._id}`} className="view-all-btn">
+                    <a
+                      href={`/agent/${agentData._id}`}
+                      className="view-all-btn"
+                    >
                       Contact
                     </a>
                   </div>
@@ -188,6 +199,5 @@ const PropertyListing = () => {
     </div>
   );
 };
-
 
 export default PropertyListing;
