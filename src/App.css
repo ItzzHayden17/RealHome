@@ -5,6 +5,7 @@
   --grey: #e5e1e6;
   --off-white: #f9f8f4;
   --off-white-t: rgba(249, 248, 244, 0.8);
+  --off-white-t2: rgba(249, 248, 244, 0.1);
   --grey-background: #d3d3cd;
   --white: #fcfcfb;
 }
@@ -1143,7 +1144,7 @@
     .property-card img {
       margin: 0 auto 10px;
       width: 100%;
-      max-width: 300px;
+      max-width: 400px;
     }
 
     .property-info {
@@ -1154,11 +1155,24 @@
       font-size: 24px;
       margin-bottom: 30px;
     }
+
+    .property-details {
+      display: flex;
+      justify-content: space-evenly;
+      font-size: 1px;
+      margin-top: -30px;
+    }
   }
 
   @media (max-width: 480px) {
     .favourite {
       font-size: 18px;
+    }
+
+    .property-details {
+      flex-direction: column;
+      gap: 7px;
+      margin-top: -30px;
     }
 
     .property-info h3 {
@@ -1363,6 +1377,7 @@
     border-radius: 10px;
     box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
   }
+
   .card {
     display: flex;
     flex-direction: row;
@@ -1597,7 +1612,6 @@
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
-
     text-decoration: none;
   }
 
@@ -1731,6 +1745,12 @@
   border-radius: 10px;
 }
 
+.slideshow-container img {
+  object-fit: contain;
+  width: 100%;
+  height: 80vh;
+}
+
 .mySlides {
   display: none;
 }
@@ -1741,6 +1761,7 @@
 
 .prev,
 .next {
+  object-fit: contain;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -1835,6 +1856,11 @@
   max-width: 800px;
 }
 
+.main {
+  width: 70%;
+  height: 70%;
+}
+
 .property_info {
   background-color: #fff;
   margin-top: 20px;
@@ -1904,9 +1930,11 @@
   flex-wrap: wrap;
 }
 
-.agent-card {
-  width: 220px;
-  text-align: center;
+.agent-image {
+  display: flex;
+  justify-content: center;
+  width: 300px;
+  height: 300px;
 }
 
 .agent-card img {
@@ -1918,11 +1946,6 @@
   transition: transform 0.3s ease;
 }
 
-.agent-card:hover img {
-  transform: scale(1.1);
-  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
-}
-
 @media (max-width: 768px) {
   .Home {
     overflow-x: hidden;
@@ -1930,12 +1953,6 @@
     .navbar {
       justify-content: space-between;
     }
-  }
-
-  .property-details1,
-  .property_main,
-  .agent-card {
-    width: 95%;
   }
 
   .agents {
