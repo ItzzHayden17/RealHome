@@ -273,7 +273,7 @@ const Home = () => {
         <h2 id="areas">
           Areas <span>Serviced</span>
         </h2>
-        <MapComponent markers={markers} />
+        {markers.length > 0  && <MapComponent markers={markers} />}
       </div>
     </div>
   );
