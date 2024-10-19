@@ -584,17 +584,6 @@
       margin-right: 8px;
       font-size: 20px;
     }
-    footer{
-      
-    }
-
-    @media (max-width: 768px) {
-      .Footer{
-        footer{
-          
-        }
-      }
-    }
 
     @media (max-width: 480px) {
       .footer-links a {
