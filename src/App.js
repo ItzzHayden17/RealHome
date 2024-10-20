@@ -12,6 +12,7 @@ import Sell from "./pages/Sell";
 import Footer from "./components/Footer";
 import Wishlist from "./pages/Wishlist";
 import AgentDetails from "./pages/AgentDetails";
+import EditListing from "./pages/EditListing";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/listing/:id" element={<Listing />} />
           <Route path="/agent/:id" element={<AgentDetails />} />
+          <Route path="/edit-listing/:id" element={<EditListing />} />
         </Routes>
       </BrowserRouter>
 

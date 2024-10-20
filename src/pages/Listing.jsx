@@ -5,18 +5,22 @@ import serverUrl from "../serverUrl";
 import axios from "axios";
 import numeral from "numeral";
 import MapComponent from "../components/MapComponent";
+import Cookie from "js-cookie";
 
 const PropertyListing = () => {
   const [propertyData, setPropertyData] = useState();
   const [agentData, setAgentData] = useState({});
   const [agentPicture, setAgentPicture] = useState("");
   const [images, setImages] = useState([]);
+  const [userId, setUserId] = useState(null);
   const listingId = useParams().id;
 
   useEffect(() => {
     axios
       .get(`${serverUrl}/listing/${listingId}`)
       .then((response) => {
+        console.log(response);
+        
         setPropertyData(response.data[0]);
         setImages(response.data[0].images || []);
         if (response.data[1]) {
@@ -27,6 +31,12 @@ const PropertyListing = () => {
       .catch((err) => {
         console.log(err);
       });
+      try {
+        setUserId(JSON.parse(Cookie.get("user"))._id);
+        console.log(JSON.parse(Cookie.get("user"))._id);
+      } catch (error) {
+        console.log("User not logged in");
+      }
   }, [listingId]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -50,11 +60,23 @@ const PropertyListing = () => {
     return () => clearInterval(interval);
   }, [images.length]);
 
+  function handleEdit (e){
+    if (e.target.name === "delete") {
+      const confirm = window.confirm("Are you sure you want to delete this listing? This action is irreversible.")
+      if (confirm) {
+        axios.delete(serverUrl+"/delete/"+listingId)
+      }
+    }else{
+      window.location.href = "/edit-listing/" + listingId
+    }
+  }
   return (
     <div className="Listing">
       <Navbar />
+      {userId === agentData._id && <><div className="edit-listing"><button onClick={handleEdit} name="edit" className="contact-agent-btn">Edit</button><button onClick={handleEdit} name="delete" className="edit-profile-btn">Delete</button></div></>}
       {propertyData && images.length > 0 ? (
         <div className="slideshow-container">
+          
           {images.map((image, index) => (
             <div
               className={`mySlides fade ${
