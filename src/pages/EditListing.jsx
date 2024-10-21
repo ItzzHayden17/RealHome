@@ -8,40 +8,43 @@ import axios from "axios";
 
 const EditListing = () => {
   const [userId, setUserId] = useState(null);
+
   const [autoComplete,setAutoComplete] = useState({lat:"",lng:"",address:""})
   const [listingData,setListingData] = useState({})
   const [imagesArray,setImagesArray] = useState([])
   const [dataURLArray,setDataURLArray] = useState([])
   const listingId = useParams().id
+
   useEffect(() => {
+    document.title = "RealHome | Edit";
     try {
       setUserId(JSON.parse(Cookie.get("user"))._id);
     } catch (error) {
       console.log("User not logged in");
     }
     try {
-        axios.get(serverUrl+"/listing/"+listingId).then((response)=>{
-            setListingData(response.data[0])
-            setImagesArray(response.data[0].images)    
-        })
+      axios.get(serverUrl + "/listing/" + listingId).then((response) => {
+        setListingData(response.data[0]);
+        setImagesArray(response.data[0].images);
+      });
     } catch (error) {
-        console.log(error);
-        
+      console.log(error);
     }
-  },[]);
+  }, []);
 
-  function handleAutoComplete(e){
-    setAutoComplete(e)
+  function handleAutoComplete(e) {
+    setAutoComplete(e);
   }
+
 
   function handleInput (e){
     const {name,value,type} = e.target
     const newValue = type === "number" ? parseFloat(value) : (value)
     setListingData((prev) => ({...prev,[name]:newValue})) 
-  }
 
-  function handleImageUpdate(e){
-    e.preventDefault()
+  }
+  function handleImageUpdate(e) {
+    e.preventDefault();
     console.log(e.target.name);
     console.log(imagesArray);
     
@@ -72,14 +75,14 @@ const EditListing = () => {
   return (
     <div className="Sell">
       <Navbar />
-     
+
       <section class="sell-property">
         <h2>
           Edit Your <span>Property</span>
         </h2>
         <form
           id="property-form"
-          action={serverUrl + "/edit-listing/"+listingData._id}
+          action={serverUrl + "/edit-listing/" + listingData._id}
           method="post"
           enctype="multipart/form-data"
           onChange={handleInput}
@@ -105,55 +108,146 @@ const EditListing = () => {
             </select>
 
             <label for="erfSize">Erf Size (m²):</label>
-            <input type="number" id="erfSize" name="sqrmeter" required value={listingData.sqrmeter} />
+            <input
+              type="number"
+              id="erfSize"
+              name="sqrmeter"
+              required
+              value={listingData.sqrmeter}
+            />
 
             <label for="address">Address:</label>
-            <AddressAutocomplete onChange={handleAutoComplete}/>
-            <input type="hidden" id="address" name="address" value={autoComplete.address} required />
-            <input type="hidden" id="lat" name="lat" value={autoComplete.lat} required />
-            <input type="hidden" id="lng" name="lng" value={autoComplete.lng} required />
+            <AddressAutocomplete onChange={handleAutoComplete} />
+            <input
+              type="hidden"
+              id="address"
+              name="address"
+              value={autoComplete.address}
+              required
+            />
+            <input
+              type="hidden"
+              id="lat"
+              name="lat"
+              value={autoComplete.lat}
+              required
+            />
+            <input
+              type="hidden"
+              id="lng"
+              name="lng"
+              value={autoComplete.lng}
+              required
+            />
 
             <label for="city">City:</label>
-            <input type="text" id="city" name="city" value={listingData.city} required />
+            <input
+              type="text"
+              id="city"
+              name="city"
+              value={listingData.city}
+              required
+            />
 
             <label for="suburb">Suburb:</label>
-            <input type="text" id="suburb" name="suburb" value={listingData.suburb} required />
+            <input
+              type="text"
+              id="suburb"
+              name="suburb"
+              value={listingData.suburb}
+              required
+            />
 
             <label for="province">Province:</label>
-            <input type="text" id="province" name="province" value={listingData.province} required />
+            <input
+              type="text"
+              id="province"
+              name="province"
+              value={listingData.province}
+              required
+            />
           </div>
 
           <div class="form-section">
             <h3>Contacts</h3>
             <label for="sellerName">Seller/Landlord Name:</label>
-            <input type="text" id="sellerName" name="sellerName" value={listingData.sellerName} required />
+            <input
+              type="text"
+              id="sellerName"
+              name="sellerName"
+              value={listingData.sellerName}
+              required
+            />
 
             <label for="sellerEmail">Seller/Landlord Email:</label>
-            <input type="email" id="sellerEmail" name="sellerEmail" value={listingData.sellerEmail} required />
+            <input
+              type="email"
+              id="sellerEmail"
+              name="sellerEmail"
+              value={listingData.sellerEmail}
+              required
+            />
 
             <label for="seller-mobile">Seller/Landlord Mobile Number:</label>
-            <input type="tel" id="sellerMobile" name="sellerMobile" value={listingData.sellerMobile} required />
+            <input
+              type="tel"
+              id="sellerMobile"
+              name="sellerMobile"
+              value={listingData.sellerMobile}
+              required
+            />
 
             <label for="agent-name">Listing Agent Name:</label>
-            <input type="text" id="agent-name" name="agentName" value={listingData.agentName} />
+            <input
+              type="text"
+              id="agent-name"
+              name="agentName"
+              value={listingData.agentName}
+            />
 
             <label for="agent-email">Listing Agent Email:</label>
-            <input type="email" id="agent-email" name="agentEmail" value={listingData.agentEmail}/>
+            <input
+              type="email"
+              id="agent-email"
+              name="agentEmail"
+              value={listingData.agentEmail}
+            />
 
             <label for="agent-mobile">Listing Agent Mobile Number:</label>
-            <input type="tel" id="agent-mobile" name="agentMobile" value={listingData.agentMobile}/>
+            <input
+              type="tel"
+              id="agent-mobile"
+              name="agentMobile"
+              value={listingData.agentMobile}
+            />
           </div>
 
           <div class="form-section">
             <h3>Marketing</h3>
             <label for="list-price">List Price (R):</label>
-            <input type="number" id="list-price" name="price" value={listingData.price} required />
+            <input
+              type="number"
+              id="list-price"
+              name="price"
+              value={listingData.price}
+              required
+            />
 
             <label for="rates">Rates (R):</label>
-            <input type="number" id="rates" name="rates" value={listingData.rates} />
+            <input
+              type="number"
+              id="rates"
+              name="rates"
+              value={listingData.rates}
+            />
 
             <label for="levies">Levies (R):</label>
-            <input type="number" id="levies" name="levies" value={listingData.levies}/>
+            <input
+              type="number"
+              id="levies"
+              name="levies"
+              value={listingData.levies}
+            />
 
             <label for="listing-heading">Listing Heading:</label>
             <input
@@ -162,7 +256,6 @@ const EditListing = () => {
               name="listingHeading"
               value={listingData.listingHeading}
               required
-              
             />
 
             <label for="listing-description">Listing Description:</label>
@@ -173,7 +266,7 @@ const EditListing = () => {
               value={listingData.listingDescription}
               required
             ></textarea>
-            <label >Edit images:</label>
+            <label>Edit images:</label>
             <div className="images-container">
             {imagesArray.length > 0 ? <>
             {imagesArray.map((image)=>{
@@ -247,13 +340,18 @@ const EditListing = () => {
             />
 
             <div className="additional-features">
-                {listingData.kitchen && <>              <label for="kitchen">Kitchen:</label>
-              <input
-                type="checkbox"
-                id="kitchen"
-                name="kitchen"
-                value="Kitchen"
-              /></>}
+              {listingData.kitchen && (
+                <>
+                  {" "}
+                  <label for="kitchen">Kitchen:</label>
+                  <input
+                    type="checkbox"
+                    id="kitchen"
+                    name="kitchen"
+                    value="Kitchen"
+                  />
+                </>
+              )}
 
               <label for="living-room">Living Room:</label>
               <input
@@ -280,12 +378,7 @@ const EditListing = () => {
               />
 
               <label for="garden">Garden:</label>
-              <input
-                type="checkbox"
-                id="garden"
-                name="garden"
-                value="Garden"
-              />
+              <input type="checkbox" id="garden" name="garden" value="Garden" />
 
               <label for="pool">Pool:</label>
               <input type="checkbox" id="pool" name="pool" value="Pool" />

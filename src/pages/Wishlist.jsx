@@ -7,6 +7,7 @@ const Wishlist = () => {
   const [user, setUser] = useState(false);
 
   useEffect(() => {
+    document.title = "RealHome | Wishlist";
     if (Cookie.get("user")) {
       setUser(JSON.parse(Cookie.get("user")));
     }

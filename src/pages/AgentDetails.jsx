@@ -12,6 +12,7 @@ const AgentDetails = () => {
   const [listingFavArray,setListingFavArray] = useState([])
 
   useEffect(() => {
+    document.title = "RealHome | Agent";
     axios
       .get(serverUrl + "/agent/" + agentId)
       .then((response) => {

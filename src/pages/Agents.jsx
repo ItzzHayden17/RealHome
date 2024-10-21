@@ -8,6 +8,7 @@ const Agents = () => {
   const [userId, setUserId] = useState(false);
 
   useEffect(() => {
+    document.title = "RealHome | Our Agents";
     axios
       .get(serverUrl + "/all-agents")
       .then((response) => {

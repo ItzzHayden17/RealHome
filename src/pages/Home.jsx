@@ -17,6 +17,7 @@ const Home = () => {
 
   useEffect(() => {
     //Use this to get data from server and set the useState.
+    document.title = "RealHome | Home";
 
     axios.get(serverUrl+"/properties").then((response)=>{
       
@@ -162,7 +163,7 @@ const Home = () => {
 
       <section class="featured-listings">
         <h2>
-          Featured <span>Listings</span>
+          Latest <span>Listings</span>
         </h2>
         <div class="listings">
           {featuredListings ? (
