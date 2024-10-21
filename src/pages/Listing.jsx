@@ -14,13 +14,12 @@ const PropertyListing = () => {
   const [images, setImages] = useState([]);
   const [userId, setUserId] = useState(null);
   const listingId = useParams().id;
-
+  ;
+  
   useEffect(() => {
     axios
       .get(`${serverUrl}/listing/${listingId}`)
       .then((response) => {
-        console.log(response);
-        
         setPropertyData(response.data[0]);
         setImages(response.data[0].images || []);
         if (response.data[1]) {
@@ -64,7 +63,7 @@ const PropertyListing = () => {
     if (e.target.name === "delete") {
       const confirm = window.confirm("Are you sure you want to delete this listing? This action is irreversible.")
       if (confirm) {
-        axios.delete(serverUrl+"/delete/"+listingId)
+        axios.delete(serverUrl+"/delete/"+listingId).then(()=>{ window.location.href="/"})
       }
     }else{
       window.location.href = "/edit-listing/" + listingId
@@ -190,20 +189,27 @@ const PropertyListing = () => {
               <div className="agents">
                 <div className="agent-card">
                   <h2>Seller / Selling Agent</h2>
-                  <div className="agent-image">
+                  
                     {agentData.image ? (
+                      <div>
+                      <div className="agent-image">
                       <img
                         src={`${serverUrl}/image/${agentPicture}`}
                         alt="Agent Photo"
+                        
                       />
+                      
+                      </div>
+                      <p>Property Practitioner</p>
+                      </div>
                     ) : (
                       <>Private seller</>
                     )}
-                  </div>
+                  
                   <h3>
                     {agentData.name} {agentData.surname}
                   </h3>
-                  <p>Property Practitioner</p>
+                  
                   <div className="button">
                     <a
                       href={`/agent/${agentData._id}`}

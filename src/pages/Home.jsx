@@ -13,49 +13,20 @@ const Home = () => {
   const [agentsData, setAgentsData] = useState([]);
   const [markers, setMarkers] = useState([]);
   const [menuActive, setMenuActive] = useState(false);
-  const [featuredListings, setFeaturedListings] = useState(false);
+  const [featuredListings, setFeaturedListings] = useState([]);
 
   useEffect(() => {
     //Use this to get data from server and set the useState.
 
-    const data = [
-      {
-        img: "./media/homepage2.jpg",
-        title: "3 Bedroom House",
-        price: "12 345 678",
-        location: "Moreleta Park, Pretoria",
-        reference: "111223533",
-      },
-      {
-        img: "./media/homepage2.jpg",
-        title: "3 Bedroom House",
-        price: "12 345 678",
-        location: "Moreleta Park, Pretoria",
-        reference: "111223533",
-      },
-      {
-        img: "./media/homepage2.jpg",
-        title: "3 Bedroom House",
-        price: "12 345 678",
-        location: "Moreleta Park, Pretoria",
-        reference: "111223533",
-      },
-      {
-        img: "./media/homepage2.jpg",
-        title: "3 Bedroom House",
-        price: "12 345 678",
-        location: "Moreleta Park, Pretoria",
-        reference: "111223533",
-      },
-      {
-        img: "./media/homepage1.jpg",
-        title: "1 Bedroom House",
-        price: "12 345 678",
-        location: "Moreleta Park, Pretoria",
-        reference: "111223533",
-      },
-    ];
-    setFeaturedListings(data);
+    axios.get(serverUrl+"/properties").then((response)=>{
+      
+      const data = response.data.slice(0,5)
+      setFeaturedListings(data);
+      console.log(data);
+      
+      
+    })
+    
 
     if (Cookie.get("user")) {
       setUser(JSON.parse(Cookie.get("user")));
@@ -199,11 +170,12 @@ const Home = () => {
               {featuredListings.map((listing) => {
                 return (
                   <FeaturedListingCard
-                    img={listing.img}
-                    title={listing.title}
+                    id={listing._id}
+                    img={serverUrl+"/image/"+ listing.images[0]}
+                    title={listing.listingHeading}
                     price={listing.price}
-                    location={listing.location}
-                    reference={listing.reference}
+                    location={listing.city}
+                    reference={listing._id}
                   />
                 );
               })}

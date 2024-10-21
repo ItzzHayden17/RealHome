@@ -11,6 +11,7 @@ const EditListing = () => {
   const [autoComplete,setAutoComplete] = useState({lat:"",lng:"",address:""})
   const [listingData,setListingData] = useState({})
   const [imagesArray,setImagesArray] = useState([])
+  const [dataURLArray,setDataURLArray] = useState([])
   const listingId = useParams().id
   useEffect(() => {
     try {
@@ -36,9 +37,7 @@ const EditListing = () => {
   function handleInput (e){
     const {name,value,type} = e.target
     const newValue = type === "number" ? parseFloat(value) : (value)
-    setListingData((prev) => ({...prev,[name]:newValue}))
-    
-    
+    setListingData((prev) => ({...prev,[name]:newValue})) 
   }
 
   function handleImageUpdate(e){
@@ -46,7 +45,28 @@ const EditListing = () => {
     console.log(e.target.name);
     console.log(imagesArray);
     
-    setImagesArray((prev) => prev.filter(image => image !== e.target.name))
+    if (e.target.id == "serverURL") {
+      setImagesArray((prev) => prev.filter(image => image !== e.target.name))
+    }else{
+      setDataURLArray((prev) => prev.filter(image => image !== e.target.name))
+    }
+  }
+
+  function handleChange(e){
+    const files = e.target.files;
+
+    Array.from(files).forEach((file) => {
+      const reader = new FileReader();
+  
+      reader.onloadend = () => {
+        setDataURLArray((prev) => [...prev,reader.result])
+      };
+  
+      reader.readAsDataURL(file);
+    });
+
+
+
   }
 
   return (
@@ -159,10 +179,23 @@ const EditListing = () => {
             {imagesArray.map((image)=>{
                 return( 
                     <div className="image-container">
-                        <button className="remove-image" onClick={handleImageUpdate} name={image}>x</button>
+                        <button className="remove-image" onClick={handleImageUpdate} name={image} id="serverURL">x</button>
                         <input type="hidden" name="images" value={image} />
                         <img src={serverUrl+"/image/"+image} alt="" />
                     </div>
+                    
+                )
+            })}
+            </>:<></>}
+            {dataURLArray.length > 0 ? <>
+            {dataURLArray.map((image)=>{
+                return( 
+                    <div className="image-container">
+                        <button className="remove-image" onClick={handleImageUpdate} name={image} id="dataURL" >x</button>
+                        <input type="hidden" name="images" value={image} />
+                        <img src={image} alt="" />
+                    </div>
+                    
                 )
             })}
             </>:<></>}
@@ -174,6 +207,7 @@ const EditListing = () => {
               id="property-images"
               name="property-images"
               multiple
+              onChange={handleChange}
             />
           </div>
 

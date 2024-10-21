@@ -12,7 +12,7 @@ const Rent = () => {
     setPropertiesData(e)
   }
 
-  const [listingFavArray,setListingFavArray] = useState(["670b842d18110f24ef80c04b"])
+  const [listingFavArray,setListingFavArray] = useState([])
 
   function handleData(e){
     setPropertiesData(e)
