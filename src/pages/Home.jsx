@@ -191,7 +191,7 @@ const Home = () => {
 
       <section class="featured-listings">
         <h2>
-          Featured <span>Listings</span>
+          Latest <span>Listings</span>
         </h2>
         <div class="listings">
           {featuredListings ? (
