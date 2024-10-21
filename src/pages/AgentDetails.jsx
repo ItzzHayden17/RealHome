@@ -8,6 +8,7 @@ const AgentDetails = () => {
   const [agentData, setAgentData] = useState();
 
   useEffect(() => {
+    document.title = "RealHome | Agent";
     axios
       .get(serverUrl + "/agent/" + agentId)
       .then((response) => {

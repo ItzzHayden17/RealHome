@@ -17,6 +17,7 @@ const Home = () => {
 
   useEffect(() => {
     //Use this to get data from server and set the useState.
+    document.title = "RealHome | Home";
 
     const data = [
       {

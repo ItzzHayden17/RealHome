@@ -5,29 +5,33 @@ import serverUrl from "../serverUrl";
 import AddressAutocomplete from "../components/AutoComplete";
 const Sell = () => {
   const [userId, setUserId] = useState(null);
-  const [autoComplete,setAutoComplete] = useState({lat:"",lng:"",address:""})
+  const [autoComplete, setAutoComplete] = useState({
+    lat: "",
+    lng: "",
+    address: "",
+  });
   useEffect(() => {
+    document.title = "RealHome | List Your Property";
     try {
       setUserId(JSON.parse(Cookie.get("user"))._id);
       console.log(JSON.parse(Cookie.get("user"))._id);
     } catch (error) {
       console.log("User not logged in");
     }
-  },[]);
+  }, []);
 
-  function handleAutoComplete(e){
-    setAutoComplete(e)
+  function handleAutoComplete(e) {
+    setAutoComplete(e);
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(autoComplete);
-    
-  },[autoComplete])
+  }, [autoComplete]);
 
   return (
     <div className="Sell">
       <Navbar />
-     
+
       <section class="sell-property">
         <h2>
           List Your <span>Property</span>
@@ -62,10 +66,28 @@ const Sell = () => {
             <input type="number" id="erfSize" name="erfSize" required />
 
             <label for="address">Address:</label>
-            <AddressAutocomplete onChange={handleAutoComplete}/>
-            <input type="hidden" id="address" name="address" value={autoComplete.address} required />
-            <input type="hidden" id="lat" name="lat" value={autoComplete.lat} required />
-            <input type="hidden" id="lng" name="lng" value={autoComplete.lng} required />
+            <AddressAutocomplete onChange={handleAutoComplete} />
+            <input
+              type="hidden"
+              id="address"
+              name="address"
+              value={autoComplete.address}
+              required
+            />
+            <input
+              type="hidden"
+              id="lat"
+              name="lat"
+              value={autoComplete.lat}
+              required
+            />
+            <input
+              type="hidden"
+              id="lng"
+              name="lng"
+              value={autoComplete.lng}
+              required
+            />
 
             <label for="city">City:</label>
             <input type="text" id="city" name="city" required />
@@ -208,12 +230,7 @@ const Sell = () => {
               />
 
               <label for="garden">Garden:</label>
-              <input
-                type="checkbox"
-                id="garden"
-                name="garden"
-                value="Garden"
-              />
+              <input type="checkbox" id="garden" name="garden" value="Garden" />
 
               <label for="pool">Pool:</label>
               <input type="checkbox" id="pool" name="pool" value="Pool" />
