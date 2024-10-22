@@ -117,9 +117,11 @@ const Home = () => {
             <li>
               <Link to="/favourites">Favourites</Link>
             </li>
+            {user ? <>
             <li>
-              <Link to="/wishlist">Wishlist</Link>
-            </li>
+            <Link to="/wishlist">Wishlist</Link>
+          </li>
+          </> : <></>}
             {user ? (
               <div onMouseEnter={handleHover} onMouseLeave={handleHover}>
                 <li>

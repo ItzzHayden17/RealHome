@@ -13,8 +13,10 @@ import Footer from "./components/Footer";
 import Wishlist from "./pages/Wishlist";
 import AgentDetails from "./pages/AgentDetails";
 import EditListing from "./pages/EditListing";
+import EditProfile from "./pages/EditProfile";
 
 function App() {
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -30,6 +32,7 @@ function App() {
           <Route path="/listing/:id" element={<Listing />} />
           <Route path="/agent/:id" element={<AgentDetails />} />
           <Route path="/edit-listing/:id" element={<EditListing />} />
+          <Route path="/edit-profile/:id" element={<EditProfile />} />
         </Routes>
       </BrowserRouter>
 

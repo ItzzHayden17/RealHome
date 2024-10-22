@@ -51,7 +51,7 @@ const Agents = () => {
                   <>
                     {userId == agent._id ? (
                       <>
-                        <button class="edit-profile-btn">Edit profile</button>
+                        <a href={"/edit-profile/"+userId}><button class="edit-profile-btn">Edit profile</button></a>
                       </>
                     ) : (
                       <>

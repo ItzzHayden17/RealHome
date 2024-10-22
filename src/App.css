@@ -242,7 +242,7 @@
   }
 
   .listing-card {
-    width: 300px;
+    width: 280px;
     background: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -1046,7 +1046,7 @@
 
   .property-details {
     display: flex;
-    gap: 15px;
+    object-fit: scale-down;
     margin-top: 10px;
   }
 
@@ -2040,6 +2040,32 @@
   }
 }
 
+.EditProfile{
+  .form-container{
+    display: flex;
+    justify-content: center;
+  }
+  form{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+  .image-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    img{
+      height: 350px;
+      width: 350px;
+      margin: 0 auto;
+      border-radius: 50%;
+      object-fit: cover;
+    } 
+  }
+
+}
 @media (max-width: 768px) {
   .Home {
     overflow-x: hidden;
