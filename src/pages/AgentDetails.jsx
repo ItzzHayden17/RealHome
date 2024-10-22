@@ -4,12 +4,12 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import serverUrl from "../serverUrl";
 import PropertyCard from "../components/PropertyCard";
-import Cookie from "js-cookie"
+import Cookie from "js-cookie";
 const AgentDetails = () => {
   const agentId = useParams().id;
   const [agentData, setAgentData] = useState();
-  const [listingData,setListingData] = useState([])
-  const [listingFavArray,setListingFavArray] = useState([])
+  const [listingData, setListingData] = useState([]);
+  const [listingFavArray, setListingFavArray] = useState([]);
 
   useEffect(() => {
     document.title = "RealHome | Agent";
@@ -22,34 +22,38 @@ const AgentDetails = () => {
         console.log(err);
       });
 
-      axios.get(serverUrl+"/properties").then((response)=>{
-        const userListings = response.data.filter((listing) => listing.userWhoListedID == agentId)
-        setListingData(userListings)
-        console.log(userListings,agentId);
-
-      })
+    axios.get(serverUrl + "/properties").then((response) => {
+      const userListings = response.data.filter(
+        (listing) => listing.userWhoListedID == agentId
+      );
+      setListingData(userListings);
+      console.log(userListings, agentId);
+    });
   }, []);
 
-  function handleFavourite(e){
+  function handleFavourite(e) {
     if (listingFavArray.some((favId) => favId === e)) {
       const updatedFavorites = listingFavArray.filter((favId) => favId !== e);
       setListingFavArray(updatedFavorites);
-      Cookie.set('favListingArray', JSON.stringify(updatedFavorites), { expires: 7000000 });
-  } else {
-    setListingFavArray((prev) => [...prev, e]);
-      Cookie.set('favListingArray', JSON.stringify([...listingFavArray, e]), { expires: 7000000 });
-  }
+      Cookie.set("favListingArray", JSON.stringify(updatedFavorites), {
+        expires: 7000000,
+      });
+    } else {
+      setListingFavArray((prev) => [...prev, e]);
+      Cookie.set("favListingArray", JSON.stringify([...listingFavArray, e]), {
+        expires: 7000000,
+      });
+    }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     try {
-      const favListingArray = Cookie.get("favListingArray")
-      setListingFavArray(JSON.parse(favListingArray))
+      const favListingArray = Cookie.get("favListingArray");
+      setListingFavArray(JSON.parse(favListingArray));
     } catch (error) {
       console.log(error);
-      
     }
-  },[])
+  }, []);
 
   return (
     <div className="AgentDetails">
@@ -57,12 +61,16 @@ const AgentDetails = () => {
       {agentData ? (
         <>
           <div className="agent-details">
-            <div className="card" >
-              {agentData.image ? <>
-                <div className="image-container">
-                <img src={serverUrl + "/image/" + agentData.image} alt="" />
-              </div>
-              </> : <></>}
+            <div className="card">
+              {agentData.image ? (
+                <>
+                  <div className="image-container">
+                    <img src={serverUrl + "/image/" + agentData.image} alt="" />
+                  </div>
+                </>
+              ) : (
+                <></>
+              )}
 
               <div className="details-container">
                 <h1>
@@ -81,7 +89,11 @@ const AgentDetails = () => {
           </div>
 
           <div className="sell-property">
-            <form method="POST" className="form-section" action={serverUrl+"/contact-agent/"+agentId}>
+            <form
+              method="POST"
+              className="form-section"
+              action={serverUrl + "/contact-agent/" + agentId}
+            >
               <label htmlFor="name">Name:</label>
               <input type="text" id="name" name="name" />
               <label htmlFor="email">Email:</label>
@@ -95,20 +107,45 @@ const AgentDetails = () => {
       ) : (
         <>Loading..</>
       )}
-    <section class="BuyOrRent  properties-list ">
-      <div class="properties-grid">
-      {listingData ? 
-        <>
-        {listingData.map((property)=>{
-          return(
-            <PropertyCard key={property.id} id={property.id} img={property.images[0]} price={property.price} title={property.listingHeading} description={property.listingDescription} bed={property.bed} bath={property.bath} car={property.car} pet={property.pet} sqrmeter={property.sqrmeter} type={property.type} city={property.city} sellType="rent" link={property._id} suburb={property.suburb} isFavourite={listingFavArray.some((id)=>property.id === id)} onClick={handleFavourite}/>
-          )
-        })}
-        </>
-        :
-        <>Loading</>}
+      <section class="BuyOrRent  properties-list ">
+        <div class="properties-grid">
+          {listingData ? (
+            <>
+              {listingData.map((property) => {
+                return (
+                  <PropertyCard
+                    key={property.id}
+                    id={property.id}
+                    img={property.images[0]}
+                    price={property.price}
+                    title={property.listingHeading}
+                    description={property.listingDescription}
+                    bed={property.bed}
+                    bath={property.bath}
+                    car={property.car}
+                    pet={property.pet}
+                    sqrmeter={property.sqrmeter}
+                    type={property.type}
+                    city={property.city}
+                    sellType="rent"
+                    link={property._id}
+                    suburb={property.suburb}
+                    isFavourite={listingFavArray.some(
+                      (id) => property.id === id
+                    )}
+                    onClick={handleFavourite}
+                  />
+                );
+              })}
+            </>
+          ) : (
+            <>Loading</>
+          )}
+        </div>
+      </section>
+      <div class="empty-div">
+        <h1>Div</h1>
       </div>
-    </section>
     </div>
   );
 };

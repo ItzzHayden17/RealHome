@@ -148,6 +148,10 @@ const Sell = () => {
             ></textarea>
 
             <label for="property-images">Upload Images:</label>
+            <h5>
+              Note that for best results, an image size of 1920x1080 is
+              recommended.
+            </h5>
             <input
               type="file"
               id="property-images"
