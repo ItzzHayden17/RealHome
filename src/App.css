@@ -2063,6 +2063,9 @@
 /* //////////////////////////////////// */
 
 .EditProfile {
+  h1{
+    text-align: center;
+  }
   .form-container {
     max-width: 760px;
     align-content: center;
@@ -2074,11 +2077,12 @@
   }
 
   form {
-    height: 85vh;
+    height: 100%;
     margin-top: 100px;
     display: flex;
     flex-direction: column;
     text-align: left;
+    padding:10px  
   }
 
   label {
@@ -2134,6 +2138,11 @@
       margin-bottom: 50px;
       border-radius: 50%;
       object-fit: cover;
+    }
+
+    label{
+      text-align: center;
+      margin-bottom: 5px;
     }
   }
 }

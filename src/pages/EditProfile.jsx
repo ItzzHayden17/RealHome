@@ -40,7 +40,7 @@ const EditProfile = () => {
   return (
     <div className="EditProfile">
       <Navbar />
-
+      <h1>Edit <span>Profile</span></h1>
       <div className="form-container">
         <form
           action={serverUrl + "/edit-profile/" + user._id}
