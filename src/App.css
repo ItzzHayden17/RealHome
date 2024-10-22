@@ -919,6 +919,7 @@
     }
   }
 
+
   .images-container {
     border: solid 1px;
     padding: 5px;
@@ -1048,6 +1049,7 @@
     display: flex;
     object-fit: scale-down;
     margin-top: 10px;
+    gap: 15px;
   }
 
   .property-details span {
@@ -1092,6 +1094,7 @@
       justify-content: space-evenly;
       font-size: 1px;
       margin-top: -30px;
+
     }
   }
 
@@ -1759,6 +1762,21 @@
     right: 10px;
   }
 
+  .additional-features{
+    text-align: left;
+    display: flex;
+  }
+  .features{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .features p{
+    margin-right: 5px ;
+  }
+
+
+
   @media (max-width: 768px) {
     .slideshow-container {
       position: relative;
@@ -2177,4 +2195,5 @@
       }
     }
   }
+
 }

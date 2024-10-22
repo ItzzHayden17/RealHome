@@ -177,7 +177,7 @@ const PropertyListing = () => {
                     ))}
                 </p>
 
-                <div className="available_rooms">
+                <div className="features">
                   <p>{propertyData.kitchen && <>Kitchen</>}</p>
                   <p>{propertyData.livingRoom && <>Living Room</>}</p>
                   <p>{propertyData.study && <>Study/Office</>}</p>
@@ -186,15 +186,17 @@ const PropertyListing = () => {
                   <p>{propertyData.pool && <>Pool</>}</p>
                   <p>{propertyData.flatlet && <>Flatlet</>}</p>
                   <p>
-                    {propertyData.additionalFeatures && (
-                      <>
-                        Additional Features: {propertyData.additionalFeatures}
-                      </>
-                    )}
                   </p>
                 </div>
+                {propertyData.additionalFeatures && (
+                      <>
+                      <div className="additional-features">
+                        Additional Features: {propertyData.additionalFeatures}
+                        </div>
+                      </>
+                    )}
               </div>
-              {propertyData.lat && (
+              {propertyData.lat != 0 && (
                 <MapComponent
                   markers={[
                     {
