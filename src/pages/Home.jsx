@@ -19,15 +19,11 @@ const Home = () => {
     //Use this to get data from server and set the useState.
     document.title = "RealHome | Home";
 
-    axios.get(serverUrl+"/properties").then((response)=>{
-      
-      const data = response.data.slice(0,5)
+    axios.get(serverUrl + "/properties").then((response) => {
+      const data = response.data.slice(0, 5);
       setFeaturedListings(data);
       console.log(data);
-      
-      
-    })
-    
+    });
 
     if (Cookie.get("user")) {
       setUser(JSON.parse(Cookie.get("user")));
@@ -117,11 +113,15 @@ const Home = () => {
             <li>
               <Link to="/favourites">Favourites</Link>
             </li>
-            {user ? <>
-            <li>
-            <Link to="/wishlist">Wishlist</Link>
-          </li>
-          </> : <></>}
+            {user ? (
+              <>
+                <li>
+                  <Link to="/wishlist">Wishlist</Link>
+                </li>
+              </>
+            ) : (
+              <></>
+            )}
             {user ? (
               <div onMouseEnter={handleHover} onMouseLeave={handleHover}>
                 <li>
@@ -174,7 +174,7 @@ const Home = () => {
                 return (
                   <FeaturedListingCard
                     id={listing._id}
-                    img={serverUrl+"/image/"+ listing.images[0]}
+                    img={serverUrl + "/image/" + listing.images[0]}
                     title={listing.listingHeading}
                     price={listing.price}
                     location={listing.city}

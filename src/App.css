@@ -11,6 +11,18 @@
   --white: #fcfcfb;
 }
 
+.gradient {
+  background-image: linear-gradient(
+    225deg,
+    hsl(48deg 29% 97%) 0%,
+    hsl(1deg 53% 84%) 16%,
+    hsl(357deg 61% 67%) 40%,
+    hsl(346deg 63% 48%) 73%,
+    hsl(330deg 56% 40%) 96%,
+    hsl(289deg 45% 33%) 100%
+  );
+}
+
 .App {
   font-family: "Montserrat", sans-serif;
   background-color: var(--off-white);
@@ -213,6 +225,44 @@
   .search-bar button:hover i {
     transform: scale(1.3);
     transition: transform 0.3s ease-in-out;
+  }
+
+  @media (max-width: 768px) {
+    .search-bar {
+      max-height: 50px;
+      max-width: 450px;
+      /* display: none !important; */
+      background: var(--off-white-t);
+      /* padding: 20px; */
+      /* display: flex; */
+      /* border-radius: 100px; */
+      /* width: 90%; */
+      /* max-width: 700px; */
+      /* height: 10px; */
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-bar input {
+      color: var(--dark-grey);
+      margin-top: -4px;
+      /* padding: 10px; */
+      /* font-size: 20px; */
+      flex: 1;
+      background: none;
+      border: none;
+      height: 10px;
+    }
+  }
+
+  .search-bar button i {
+    display: none;
+    font-size: 2px;
+    /* background-color: transparent; */
+    /* border: none; */
+
+    /* padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 30px; */
   }
 
   /* //////////////////////////////////// */
@@ -466,6 +516,7 @@
     color: var(--dark-grey);
     font-size: 32px;
     margin-bottom: 20px;
+    margin-top: 40px;
     text-align: center;
   }
 
@@ -919,7 +970,6 @@
     }
   }
 
-
   .images-container {
     border: solid 1px;
     padding: 5px;
@@ -1068,7 +1118,7 @@
     }
 
     .property-card {
-      width: 410px;
+      max-width: 410px;
       flex-direction: column;
       height: auto;
     }
@@ -1094,7 +1144,6 @@
       justify-content: space-evenly;
       font-size: 1px;
       margin-top: -30px;
-
     }
   }
 
@@ -1461,26 +1510,67 @@
     width: 200px;
   }
 
-  .login-section {
-    width: 90%;
-    margin: 20px auto;
-    padding: 15px;
+  .agent-details {
+    max-width: 80%;
   }
 
-  .login-section h2 {
-    font-size: 1.5rem;
+  .image-container {
+    max-width: 370px;
   }
 
-  input {
-    font-size: 0.9rem;
+  .image-container img {
+    max-width: 250px;
+    max-height: 250px;
+    display: block;
+    margin: 10px auto;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
   }
 
-  button {
-    font-size: 0.9rem;
-  }
+  .details-container {
+    max-width: 410px;
+    text-align: center;
+    margin: 30px 0;
+    button {
+      margin: 0 auto;
+      background-color: var(--purple);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-family: "Sora", sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-  p {
-    font-size: 0.8rem;
+    button:hover {
+      background-color: var(--red);
+    }
+
+    .login-section {
+      width: 90%;
+      margin: 20px auto;
+      padding: 15px;
+    }
+
+    .login-section h2 {
+      font-size: 1.5rem;
+    }
+
+    input {
+      font-size: 0.9rem;
+    }
+
+    button {
+      font-size: 0.9rem;
+    }
+
+    p {
+      font-size: 0.8rem;
+    }
   }
 }
 .Agents {
@@ -1762,20 +1852,18 @@
     right: 10px;
   }
 
-  .additional-features{
+  .additional-features {
     text-align: left;
     display: flex;
   }
-  .features{
+  .features {
     display: flex;
     flex-direction: row;
   }
 
-  .features p{
-    margin-right: 5px ;
+  .features p {
+    margin-right: 5px;
   }
-
-
 
   @media (max-width: 768px) {
     .slideshow-container {
@@ -2063,7 +2151,7 @@
 /* //////////////////////////////////// */
 
 .EditProfile {
-  h1{
+  h1 {
     text-align: center;
   }
   .form-container {
@@ -2082,7 +2170,7 @@
     display: flex;
     flex-direction: column;
     text-align: left;
-    padding:10px  
+    padding: 10px;
   }
 
   label {
@@ -2140,7 +2228,7 @@
       object-fit: cover;
     }
 
-    label{
+    label {
       text-align: center;
       margin-bottom: 5px;
     }
@@ -2265,5 +2353,4 @@
       }
     }
   }
-
 }
