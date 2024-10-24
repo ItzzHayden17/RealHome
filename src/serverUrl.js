@@ -1,3 +1,3 @@
-const serverUrl = "http://localhost:8080"
+const serverUrl = "https://realhome-be.onrender.com"
 
 export default serverUrl    
