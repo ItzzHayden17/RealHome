@@ -37,7 +37,7 @@ const Login = () => {
     })
     .then((response) => {
       Cookie.set("user",JSON.stringify(response.data));
-      
+      window.location.href = "/"
     })
     .catch((error) => {
       console.error("Login error:", error);
