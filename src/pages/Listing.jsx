@@ -68,7 +68,7 @@ const PropertyListing = () => {
       if (confirm) {
 
         axios.delete(serverUrl+"/delete/"+listingId).then(()=>{ window.location.href="/"})
-
+        window.location.href = "/"
       }
     } else {
       window.location.href = "/edit-listing/" + listingId;
