@@ -23,7 +23,10 @@ const Home = () => {
       const data = response.data.slice(0, 5);
       setFeaturedListings(data);
       console.log(data);
-    });
+    }).catch((err)=>{
+      console.log(err);
+      
+    })
 
     if (Cookie.get("user")) {
       setUser(JSON.parse(Cookie.get("user")));

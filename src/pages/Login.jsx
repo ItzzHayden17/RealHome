@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import serverUrl from "../serverUrl";
+import axios from "axios";
+import Cookie from "js-cookie";
 const Login = () => {
   const [signUpActive, setSignUpACtive] = useState(false);
   const [isAgent, setIsAgent] = useState(false);
+  const [userLoginDetails,setUserLoginDetails] = useState({email:"",password:""})
 
   function handleAgent() {
     if (!isAgent) {
@@ -19,6 +22,34 @@ const Login = () => {
     } else {
       setSignUpACtive(true);
     }
+  }
+
+  function handleLogin(e){
+    e.preventDefault()
+    const formData = new FormData();
+    formData.append('email', userLoginDetails.email);
+    formData.append('password', userLoginDetails.password);
+    
+    axios.post(serverUrl + "/login", formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    .then((response) => {
+      Cookie.set("user",JSON.stringify(response.data));
+      
+    })
+    .catch((error) => {
+      console.error("Login error:", error);
+      // Handle error
+    });
+    
+  }
+
+  function handleChange(e){
+    const {value,name} = e.target
+    setUserLoginDetails((prev) =>({...prev,[name]:value}))
+    
   }
   return (
     <div>
@@ -119,9 +150,10 @@ const Login = () => {
                   id="loginForm"
                   action={serverUrl + "/login"}
                   method="POST"
+                  onSubmit={handleLogin}
                 >
                   <label for="email">Email Address:</label>
-                  <input type="email" id="email" name="email" required />
+                  <input type="email" id="email" name="email" value={userLoginDetails.email} required onChange={handleChange} />
 
                   <label for="password">Password:</label>
                   <input
@@ -129,6 +161,8 @@ const Login = () => {
                     id="password"
                     name="password"
                     required
+                    value={userLoginDetails.password}
+                    onChange={handleChange}
                   />
 
                   <button type="submit" class="login-btn">
